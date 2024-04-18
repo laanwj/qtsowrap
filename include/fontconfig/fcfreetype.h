@@ -24,6 +24,7 @@
 
 #ifndef _FCFREETYPE_H_
 #define _FCFREETYPE_H_
+#include <fontconfig/fontconfig.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
