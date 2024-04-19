@@ -413,10 +413,9 @@ xcb_dri3_open_reply (xcb_connection_t        *c,
  * @param c      The connection
  * @param reply  The reply
  *
- * Returns a pointer to the array of reply fds of the reply.
+ * Returns the array of reply fds of the request asked by
  *
- * The returned value points into the reply and must not be free().
- * The fds are not managed by xcb. You must close() them before freeing the reply.
+ * The returned value must be freed by the caller using free().
  */
 int *
 xcb_dri3_open_reply_fds (xcb_connection_t       *c  /**< */,
@@ -516,10 +515,9 @@ xcb_dri3_buffer_from_pixmap_reply (xcb_connection_t                      *c,
  * @param c      The connection
  * @param reply  The reply
  *
- * Returns a pointer to the array of reply fds of the reply.
+ * Returns the array of reply fds of the request asked by
  *
- * The returned value points into the reply and must not be free().
- * The fds are not managed by xcb. You must close() them before freeing the reply.
+ * The returned value must be freed by the caller using free().
  */
 int *
 xcb_dri3_buffer_from_pixmap_reply_fds (xcb_connection_t                     *c  /**< */,
@@ -611,10 +609,9 @@ xcb_dri3_fd_from_fence_reply (xcb_connection_t                 *c,
  * @param c      The connection
  * @param reply  The reply
  *
- * Returns a pointer to the array of reply fds of the reply.
+ * Returns the array of reply fds of the request asked by
  *
- * The returned value points into the reply and must not be free().
- * The fds are not managed by xcb. You must close() them before freeing the reply.
+ * The returned value must be freed by the caller using free().
  */
 int *
 xcb_dri3_fd_from_fence_reply_fds (xcb_connection_t                *c  /**< */,
@@ -832,10 +829,9 @@ xcb_dri3_buffers_from_pixmap_reply (xcb_connection_t                       *c,
  * @param c      The connection
  * @param reply  The reply
  *
- * Returns a pointer to the array of reply fds of the reply.
+ * Returns the array of reply fds of the request asked by
  *
- * The returned value points into the reply and must not be free().
- * The fds are not managed by xcb. You must close() them before freeing the reply.
+ * The returned value must be freed by the caller using free().
  */
 int *
 xcb_dri3_buffers_from_pixmap_reply_fds (xcb_connection_t                      *c  /**< */,

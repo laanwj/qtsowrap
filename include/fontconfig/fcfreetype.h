@@ -24,7 +24,6 @@
 
 #ifndef _FCFREETYPE_H_
 #define _FCFREETYPE_H_
-#include <fontconfig/fontconfig.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -52,7 +51,7 @@ FcPatternAddFTFace (FcPattern *p, const char *object, const FT_Face f);
 FcPublic FcPattern *
 FcFreeTypeQueryFace (const FT_Face  face,
 		     const FcChar8  *file,
-		     unsigned int   id,
+		     int	    id,
 		     FcBlanks	    *blanks);
 
 _FCFUNCPROTOEND
