@@ -17,3 +17,149 @@ add_library(qtsowrap STATIC
   freetype-so_wrap.c
   fontconfig-so_wrap.c
 )
+target_sources(qtsowrap
+  PUBLIC
+  ../include_gen/xcb-so_wrap.h
+  ../include_gen/xcb_icccm-so_wrap.h
+  ../include_gen/xcb_image-so_wrap.h
+  ../include_gen/xcb_keysyms-so_wrap.h
+  ../include_gen/xcb_randr-so_wrap.h
+  ../include_gen/xcb_render-so_wrap.h
+  ../include_gen/xcb_render_util-so_wrap.h
+  ../include_gen/xcb_shape-so_wrap.h
+  ../include_gen/xcb_shm-so_wrap.h
+  ../include_gen/xcb_sync-so_wrap.h
+  ../include_gen/xcb_xfixes-so_wrap.h
+  ../include_gen/xcb_xinerama-so_wrap.h
+  ../include_gen/xcb_xkb-so_wrap.h
+  ../include_gen/xkbcommon-so_wrap.h
+  ../include_gen/xkbcommon_x11-so_wrap.h
+  ../include_gen/freetype-so_wrap.h
+  ../include_gen/fontconfig-so_wrap.h
+)
+set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER
+  ../include_gen/xcb-so_wrap.h
+  ../include_gen/xcb_icccm-so_wrap.h
+  ../include_gen/xcb_image-so_wrap.h
+  ../include_gen/xcb_keysyms-so_wrap.h
+  ../include_gen/xcb_randr-so_wrap.h
+  ../include_gen/xcb_render-so_wrap.h
+  ../include_gen/xcb_render_util-so_wrap.h
+  ../include_gen/xcb_shape-so_wrap.h
+  ../include_gen/xcb_shm-so_wrap.h
+  ../include_gen/xcb_sync-so_wrap.h
+  ../include_gen/xcb_xfixes-so_wrap.h
+  ../include_gen/xcb_xinerama-so_wrap.h
+  ../include_gen/xcb_xkb-so_wrap.h
+  ../include_gen/xkbcommon-so_wrap.h
+  ../include_gen/xkbcommon_x11-so_wrap.h
+  ../include_gen/freetype-so_wrap.h
+  ../include_gen/fontconfig-so_wrap.h
+)
+install(TARGETS qtsowrap PUBLIC_HEADER)
+
+install(FILES
+  ../include/ft2build.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/.
+)
+install(FILES
+  ../include/xcb/xc_misc.h
+  ../include/xcb/xfixes.h
+  ../include/xcb/render.h
+  ../include/xcb/xcbext.h
+  ../include/xcb/xcb_bitops.h
+  ../include/xcb/dri3.h
+  ../include/xcb/bigreq.h
+  ../include/xcb/shape.h
+  ../include/xcb/randr.h
+  ../include/xcb/xcb.h
+  ../include/xcb/sync.h
+  ../include/xcb/xcb_pixel.h
+  ../include/xcb/dri2.h
+  ../include/xcb/xcb_icccm.h
+  ../include/xcb/xproto.h
+  ../include/xcb/xcb_keysyms.h
+  ../include/xcb/xinerama.h
+  ../include/xcb/xcb_image.h
+  ../include/xcb/present.h
+  ../include/xcb/glx.h
+  ../include/xcb/xcb_renderutil.h
+  ../include/xcb/xkb.h
+  ../include/xcb/shm.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xcb
+)
+install(FILES
+  ../include/freetype/ftoutln.h
+  ../include/freetype/ftimage.h
+  ../include/freetype/t1tables.h
+  ../include/freetype/ftparams.h
+  ../include/freetype/ftincrem.h
+  ../include/freetype/ftsizes.h
+  ../include/freetype/ttnameid.h
+  ../include/freetype/fterrors.h
+  ../include/freetype/fterrdef.h
+  ../include/freetype/ftcache.h
+  ../include/freetype/ftsynth.h
+  ../include/freetype/ftglyph.h
+  ../include/freetype/otsvg.h
+  ../include/freetype/ftbbox.h
+  ../include/freetype/ftgxval.h
+  ../include/freetype/tttags.h
+  ../include/freetype/ftadvanc.h
+  ../include/freetype/ftgzip.h
+  ../include/freetype/ftdriver.h
+  ../include/freetype/ftbzip2.h
+  ../include/freetype/fttrigon.h
+  ../include/freetype/ftsnames.h
+  ../include/freetype/ftlogging.h
+  ../include/freetype/ftmoderr.h
+  ../include/freetype/ftlist.h
+  ../include/freetype/ftgasp.h
+  ../include/freetype/freetype.h
+  ../include/freetype/ftchapters.h
+  ../include/freetype/ftcid.h
+  ../include/freetype/ftstroke.h
+  ../include/freetype/ftmac.h
+  ../include/freetype/ftrender.h
+  ../include/freetype/ftbitmap.h
+  ../include/freetype/fttypes.h
+  ../include/freetype/ftlcdfil.h
+  ../include/freetype/ftpfr.h
+  ../include/freetype/ftfntfmt.h
+  ../include/freetype/tttables.h
+  ../include/freetype/ftsystem.h
+  ../include/freetype/ftlzw.h
+  ../include/freetype/ftwinfnt.h
+  ../include/freetype/ftotval.h
+  ../include/freetype/ftcolor.h
+  ../include/freetype/ftmodapi.h
+  ../include/freetype/ftbdf.h
+  ../include/freetype/ftmm.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype
+)
+install(FILES
+  ../include/freetype/config/ftoption.h
+  ../include/freetype/config/ftconfig.h
+  ../include/freetype/config/mac-support.h
+  ../include/freetype/config/ftstdlib.h
+  ../include/freetype/config/ftmodule.h
+  ../include/freetype/config/integer-types.h
+  ../include/freetype/config/ftheader.h
+  ../include/freetype/config/public-macros.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype/config
+)
+install(FILES
+  ../include/fontconfig/fcprivate.h
+  ../include/fontconfig/fcfreetype.h
+  ../include/fontconfig/fontconfig.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fontconfig
+)
+install(FILES
+  ../include/xkbcommon/xkbcommon-names.h
+  ../include/xkbcommon/xkbcommon.h
+  ../include/xkbcommon/xkbcommon-keysyms.h
+  ../include/xkbcommon/xkbcommon-x11.h
+  ../include/xkbcommon/xkbcommon-compat.h
+  ../include/xkbcommon/xkbcommon-compose.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xkbcommon
+)

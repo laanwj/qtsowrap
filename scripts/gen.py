@@ -53,12 +53,15 @@ OUT_H_SUFFIX = '-so_wrap.h'
 OUT_C_SUFFIX = '-so_wrap.c'
 
 def main():
+    header_files = []
     source_files = []
     for (base, soname, incnames, deps) in ALL_LIBS:
-        out_hdr  = os.path.join(OUT_DIR_H, base + OUT_H_SUFFIX)
+        out_hdr_base = base + OUT_H_SUFFIX
+        out_hdr = os.path.join(OUT_DIR_H, out_hdr_base)
         out_impl_base = base + OUT_C_SUFFIX
         out_impl = os.path.join(OUT_DIR_C, out_impl_base)
 
+        header_files.append(out_hdr_base)
         source_files.append(out_impl_base)
 
         sys_include = []
@@ -88,6 +91,28 @@ def main():
             f.write(f'  {source_file}\n')
 
         f.write(')\n')
+        f.write('target_sources(qtsowrap\n')
+        f.write(f'  PUBLIC\n')
+        for source_file in header_files:
+            f.write(f'  ../include_gen/{source_file}\n')
+        f.write(')\n')
+        f.write('set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER\n')
+        for source_file in header_files:
+            f.write(f'  ../include_gen/{source_file}\n')
+        f.write(')\n')
+        f.write('install(TARGETS qtsowrap PUBLIC_HEADER)\n')
+
+        f.write('\n')
+        # Also install all the base headers from include/ 
+        # These need to preserve the hierarchy, so don't specify them as PUBLIC_HEADER.
+        prefix = 'include'
+        for root, dirs, files in os.walk(prefix):
+            f.write('install(FILES\n')
+            for file in files:
+                filename = os.path.join(root, file)
+                f.write(f'  ../{filename}\n')
+            f.write('  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/' + os.path.relpath(root, prefix) + '\n')
+            f.write(')\n')
 
 if __name__ == '__main__':
     main()

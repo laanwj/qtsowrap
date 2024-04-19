@@ -7,6 +7,8 @@ project(qtsowrap
   LANGUAGES C
 )
 
+include(GNUInstallDirs)
+
 # The library version is based on libtool versioning of the ABI. The set of
 # rules for updating the version can be found here:
 # https://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
