@@ -3,7 +3,7 @@ from itertools import chain
 import os
 import subprocess
 
-GEN='dynload-wrapper/generate-wrapper.py'
+GEN='scripts/generate-wrapper.py'
 ALL_LIBS = [
 ('xcb',             'libxcb.so.1',                 ['xcb/xcb.h']),
 ('xcb_icccm',       'libxcb-icccm.so.4',           ['xcb/xcb_icccm.h']),

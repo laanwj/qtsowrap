@@ -37,7 +37,7 @@ except:
     sys.exit(1)
 
 VERSION="0.5"
-URL="https://github.com/hpvb/dynload-wrapper (patched)"
+URL="https://github.com/laanwj/qtsowrap"
 PROGNAME=sys.argv[0]
 FLAGS=""
 
