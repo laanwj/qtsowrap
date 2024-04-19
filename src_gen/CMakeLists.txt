@@ -1,0 +1,19 @@
+add_library(qtsowrap STATIC
+  xcb-so_wrap.c
+  xcb_icccm-so_wrap.c
+  xcb_image-so_wrap.c
+  xcb_keysyms-so_wrap.c
+  xcb_randr-so_wrap.c
+  xcb_render-so_wrap.c
+  xcb_render_util-so_wrap.c
+  xcb_shape-so_wrap.c
+  xcb_shm-so_wrap.c
+  xcb_sync-so_wrap.c
+  xcb_xfixes-so_wrap.c
+  xcb_xinerama-so_wrap.c
+  xcb_xkb-so_wrap.c
+  xkbcommon-so_wrap.c
+  xkbcommon_x11-so_wrap.c
+  freetype-so_wrap.c
+  fontconfig-so_wrap.c
+)

@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
+'''
+(Re)_generate source files and build system file.
+'''
 from itertools import chain
 import os
 import subprocess
 
 GEN='scripts/generate-wrapper.py'
 ALL_LIBS = [
+# shortname         # soname                       # includes to scan            # shortnames of inter-dependencies
 ('xcb',             'libxcb.so.1',                 ['xcb/xcb.h'],                []),
 ('xcb_icccm',       'libxcb-icccm.so.4',           ['xcb/xcb_icccm.h'],          ['xcb']),
 ('xcb_image',       'libxcb-image.so.0',           ['xcb/xcb_image.h'],          ['xcb', 'xcb_shm']),
@@ -49,9 +53,13 @@ OUT_H_SUFFIX = '-so_wrap.h'
 OUT_C_SUFFIX = '-so_wrap.c'
 
 def main():
+    source_files = []
     for (base, soname, incnames, deps) in ALL_LIBS:
         out_hdr  = os.path.join(OUT_DIR_H, base + OUT_H_SUFFIX)
-        out_impl = os.path.join(OUT_DIR_C, base + OUT_C_SUFFIX)
+        out_impl_base = base + OUT_C_SUFFIX
+        out_impl = os.path.join(OUT_DIR_C, out_impl_base)
+
+        source_files.append(out_impl_base)
 
         sys_include = []
         for depname in deps:
@@ -71,6 +79,15 @@ def main():
             '--ignore-other',
             '--include-dir', INC_DIR
         ], check=True)
+
+    # Generate CMake build file.
+    # Avoids having to use globbing.
+    with open('src_gen/CMakeLists.txt', 'w') as f:
+        f.write('add_library(qtsowrap STATIC\n')
+        for source_file in source_files:
+            f.write(f'  {source_file}\n')
+
+        f.write(')\n')
 
 if __name__ == '__main__':
     main()
