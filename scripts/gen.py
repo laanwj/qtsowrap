@@ -9,7 +9,7 @@ import subprocess
 GEN='scripts/generate-wrapper.py'
 ALL_LIBS = [
 # shortname         # soname                       # includes to scan            # shortnames of inter-dependencies
-('xcb',             'libxcb.so.1',                 ['xcb/xcb.h'],                []),
+('xcb',             'libxcb.so.1',                 ['xcb/xproto.h', 'xcb/xcb.h'],[]),
 ('xcb_icccm',       'libxcb-icccm.so.4',           ['xcb/xcb_icccm.h'],          ['xcb']),
 ('xcb_image',       'libxcb-image.so.0',           ['xcb/xcb_image.h'],          ['xcb', 'xcb_shm']),
 ('xcb_keysyms',     'libxcb-keysyms.so.1',         ['xcb/xcb_keysyms.h'],        ['xcb']),
