@@ -62,14 +62,18 @@ def replace_name(t, oldname, newname):
     if hasattr(t, "type"):
         replace_name(t.type, oldname, newname)
 
-def parse_header(filename, omit_prefix, initname, ignore_headers = [], ignore_all = False, include_headers = [], include_dirs=[]):
+def parse_headers(filenames, omit_prefix, initname, ignore_headers = [], ignore_all = False, include_headers = [], include_dirs=[]):
     mydir = os.path.dirname(os.path.abspath(__file__))
 
     extra_args = []
     for inc_dir in include_dirs:
         extra_args.extend(['-I', inc_dir])
 
-    ast = parse_file(filename, use_cpp=True, cpp_path='gcc', cpp_args=['-E', '-include', f'{mydir}/attributes.h', '-I', f'{mydir}/fake_libc_include'] + extra_args)
+    # pass filenames before the last one to -include
+    for fname in filenames[0:-1]:
+        extra_args.extend(['-include', fname])
+
+    ast = parse_file(filenames[-1], use_cpp=True, cpp_path='gcc', cpp_args=['-E', '-include', f'{mydir}/attributes.h', '-I', f'{mydir}/fake_libc_include'] + extra_args)
 
     functions = []
     sym_definitions = []
@@ -231,15 +235,14 @@ if __name__ == "__main__":
     functions = []
     sym_definitions = []
 
-    for filename in args.include:
-        f, s = parse_header(filename, args.omit_prefix, args.init_name, args.ignore_headers, args.ignore_other, args.include, args.include_dir)
-        for item in f:
-            if item not in functions:
-                functions.append(item)
+    f, s = parse_headers(args.include, args.omit_prefix, args.init_name, args.ignore_headers, args.ignore_other, args.include, args.include_dir)
+    for item in f:
+        if item not in functions:
+            functions.append(item)
 
-        for item in s: 
-            if item not in sym_definitions:
-                sym_definitions.append(item)
+    for item in s:
+        if item not in sym_definitions:
+            sym_definitions.append(item)
 
     write_implementation(args.output_implementation, args.soname, args.sys_include, args.init_name, functions, sym_definitions)
     write_header(args.output_header, args.sys_include, args.init_name, functions, sym_definitions)
