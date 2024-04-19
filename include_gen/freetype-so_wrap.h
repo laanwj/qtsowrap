@@ -28,6 +28,8 @@
 #define FT_Render_Glyph FT_Render_Glyph_dylibloader_orig_freetype
 #define FT_Get_Kerning FT_Get_Kerning_dylibloader_orig_freetype
 #define FT_Get_Track_Kerning FT_Get_Track_Kerning_dylibloader_orig_freetype
+#define FT_Get_Glyph_Name FT_Get_Glyph_Name_dylibloader_orig_freetype
+#define FT_Get_Postscript_Name FT_Get_Postscript_Name_dylibloader_orig_freetype
 #define FT_Select_Charmap FT_Select_Charmap_dylibloader_orig_freetype
 #define FT_Set_Charmap FT_Set_Charmap_dylibloader_orig_freetype
 #define FT_Get_Charmap_Index FT_Get_Charmap_Index_dylibloader_orig_freetype
@@ -36,8 +38,6 @@
 #define FT_Get_Next_Char FT_Get_Next_Char_dylibloader_orig_freetype
 #define FT_Face_Properties FT_Face_Properties_dylibloader_orig_freetype
 #define FT_Get_Name_Index FT_Get_Name_Index_dylibloader_orig_freetype
-#define FT_Get_Glyph_Name FT_Get_Glyph_Name_dylibloader_orig_freetype
-#define FT_Get_Postscript_Name FT_Get_Postscript_Name_dylibloader_orig_freetype
 #define FT_Get_SubGlyph_Info FT_Get_SubGlyph_Info_dylibloader_orig_freetype
 #define FT_Get_FSType_Flags FT_Get_FSType_Flags_dylibloader_orig_freetype
 #define FT_Face_GetCharVariantIndex FT_Face_GetCharVariantIndex_dylibloader_orig_freetype
@@ -70,9 +70,7 @@
 #define FT_Outline_Render FT_Outline_Render_dylibloader_orig_freetype
 #define FT_Outline_Get_Orientation FT_Outline_Get_Orientation_dylibloader_orig_freetype
 #define FT_GlyphSlot_Embolden FT_GlyphSlot_Embolden_dylibloader_orig_freetype
-#define FT_GlyphSlot_AdjustWeight FT_GlyphSlot_AdjustWeight_dylibloader_orig_freetype
 #define FT_GlyphSlot_Oblique FT_GlyphSlot_Oblique_dylibloader_orig_freetype
-#define FT_GlyphSlot_Slant FT_GlyphSlot_Slant_dylibloader_orig_freetype
 #define FT_Get_Sfnt_Table FT_Get_Sfnt_Table_dylibloader_orig_freetype
 #define FT_Load_Sfnt_Table FT_Load_Sfnt_Table_dylibloader_orig_freetype
 #define FT_Sfnt_Table_Info FT_Sfnt_Table_Info_dylibloader_orig_freetype
@@ -141,6 +139,8 @@
 #undef FT_Render_Glyph
 #undef FT_Get_Kerning
 #undef FT_Get_Track_Kerning
+#undef FT_Get_Glyph_Name
+#undef FT_Get_Postscript_Name
 #undef FT_Select_Charmap
 #undef FT_Set_Charmap
 #undef FT_Get_Charmap_Index
@@ -149,8 +149,6 @@
 #undef FT_Get_Next_Char
 #undef FT_Face_Properties
 #undef FT_Get_Name_Index
-#undef FT_Get_Glyph_Name
-#undef FT_Get_Postscript_Name
 #undef FT_Get_SubGlyph_Info
 #undef FT_Get_FSType_Flags
 #undef FT_Face_GetCharVariantIndex
@@ -183,9 +181,7 @@
 #undef FT_Outline_Render
 #undef FT_Outline_Get_Orientation
 #undef FT_GlyphSlot_Embolden
-#undef FT_GlyphSlot_AdjustWeight
 #undef FT_GlyphSlot_Oblique
-#undef FT_GlyphSlot_Slant
 #undef FT_Get_Sfnt_Table
 #undef FT_Load_Sfnt_Table
 #undef FT_Sfnt_Table_Info
@@ -245,6 +241,8 @@ extern "C" {
 #define FT_Render_Glyph FT_Render_Glyph_dylibloader_wrapper_freetype
 #define FT_Get_Kerning FT_Get_Kerning_dylibloader_wrapper_freetype
 #define FT_Get_Track_Kerning FT_Get_Track_Kerning_dylibloader_wrapper_freetype
+#define FT_Get_Glyph_Name FT_Get_Glyph_Name_dylibloader_wrapper_freetype
+#define FT_Get_Postscript_Name FT_Get_Postscript_Name_dylibloader_wrapper_freetype
 #define FT_Select_Charmap FT_Select_Charmap_dylibloader_wrapper_freetype
 #define FT_Set_Charmap FT_Set_Charmap_dylibloader_wrapper_freetype
 #define FT_Get_Charmap_Index FT_Get_Charmap_Index_dylibloader_wrapper_freetype
@@ -253,8 +251,6 @@ extern "C" {
 #define FT_Get_Next_Char FT_Get_Next_Char_dylibloader_wrapper_freetype
 #define FT_Face_Properties FT_Face_Properties_dylibloader_wrapper_freetype
 #define FT_Get_Name_Index FT_Get_Name_Index_dylibloader_wrapper_freetype
-#define FT_Get_Glyph_Name FT_Get_Glyph_Name_dylibloader_wrapper_freetype
-#define FT_Get_Postscript_Name FT_Get_Postscript_Name_dylibloader_wrapper_freetype
 #define FT_Get_SubGlyph_Info FT_Get_SubGlyph_Info_dylibloader_wrapper_freetype
 #define FT_Get_FSType_Flags FT_Get_FSType_Flags_dylibloader_wrapper_freetype
 #define FT_Face_GetCharVariantIndex FT_Face_GetCharVariantIndex_dylibloader_wrapper_freetype
@@ -287,9 +283,7 @@ extern "C" {
 #define FT_Outline_Render FT_Outline_Render_dylibloader_wrapper_freetype
 #define FT_Outline_Get_Orientation FT_Outline_Get_Orientation_dylibloader_wrapper_freetype
 #define FT_GlyphSlot_Embolden FT_GlyphSlot_Embolden_dylibloader_wrapper_freetype
-#define FT_GlyphSlot_AdjustWeight FT_GlyphSlot_AdjustWeight_dylibloader_wrapper_freetype
 #define FT_GlyphSlot_Oblique FT_GlyphSlot_Oblique_dylibloader_wrapper_freetype
-#define FT_GlyphSlot_Slant FT_GlyphSlot_Slant_dylibloader_wrapper_freetype
 #define FT_Get_Sfnt_Table FT_Get_Sfnt_Table_dylibloader_wrapper_freetype
 #define FT_Load_Sfnt_Table FT_Load_Sfnt_Table_dylibloader_wrapper_freetype
 #define FT_Sfnt_Table_Info FT_Sfnt_Table_Info_dylibloader_wrapper_freetype
@@ -332,7 +326,7 @@ extern FT_Error (*FT_New_Face_dylibloader_wrapper_freetype)(FT_Library, const ch
 extern FT_Error (*FT_New_Memory_Face_dylibloader_wrapper_freetype)(FT_Library, const FT_Byte *, FT_Long, FT_Long, FT_Face *);
 extern FT_Error (*FT_Open_Face_dylibloader_wrapper_freetype)(FT_Library, const FT_Open_Args *, FT_Long, FT_Face *);
 extern FT_Error (*FT_Attach_File_dylibloader_wrapper_freetype)(FT_Face, const char *);
-extern FT_Error (*FT_Attach_Stream_dylibloader_wrapper_freetype)(FT_Face, const FT_Open_Args *);
+extern FT_Error (*FT_Attach_Stream_dylibloader_wrapper_freetype)(FT_Face, FT_Open_Args *);
 extern FT_Error (*FT_Reference_Face_dylibloader_wrapper_freetype)(FT_Face);
 extern FT_Error (*FT_Done_Face_dylibloader_wrapper_freetype)(FT_Face);
 extern FT_Error (*FT_Select_Size_dylibloader_wrapper_freetype)(FT_Face, FT_Int);
@@ -346,6 +340,8 @@ extern void (*FT_Get_Transform_dylibloader_wrapper_freetype)(FT_Face, FT_Matrix 
 extern FT_Error (*FT_Render_Glyph_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_Render_Mode);
 extern FT_Error (*FT_Get_Kerning_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_UInt, FT_UInt, FT_Vector *);
 extern FT_Error (*FT_Get_Track_Kerning_dylibloader_wrapper_freetype)(FT_Face, FT_Fixed, FT_Int, FT_Fixed *);
+extern FT_Error (*FT_Get_Glyph_Name_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_Pointer, FT_UInt);
+extern const char *(*FT_Get_Postscript_Name_dylibloader_wrapper_freetype)(FT_Face);
 extern FT_Error (*FT_Select_Charmap_dylibloader_wrapper_freetype)(FT_Face, FT_Encoding);
 extern FT_Error (*FT_Set_Charmap_dylibloader_wrapper_freetype)(FT_Face, FT_CharMap);
 extern FT_Int (*FT_Get_Charmap_Index_dylibloader_wrapper_freetype)(FT_CharMap);
@@ -354,8 +350,6 @@ extern FT_ULong (*FT_Get_First_Char_dylibloader_wrapper_freetype)(FT_Face, FT_UI
 extern FT_ULong (*FT_Get_Next_Char_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_UInt *);
 extern FT_Error (*FT_Face_Properties_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_Parameter *);
 extern FT_UInt (*FT_Get_Name_Index_dylibloader_wrapper_freetype)(FT_Face, const FT_String *);
-extern FT_Error (*FT_Get_Glyph_Name_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_Pointer, FT_UInt);
-extern const char *(*FT_Get_Postscript_Name_dylibloader_wrapper_freetype)(FT_Face);
 extern FT_Error (*FT_Get_SubGlyph_Info_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_UInt, FT_Int *, FT_UInt *, FT_Int *, FT_Int *, FT_Matrix *);
 extern FT_UShort (*FT_Get_FSType_Flags_dylibloader_wrapper_freetype)(FT_Face);
 extern FT_UInt (*FT_Face_GetCharVariantIndex_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_ULong);
@@ -388,9 +382,7 @@ extern FT_Error (*FT_Outline_Get_Bitmap_dylibloader_wrapper_freetype)(FT_Library
 extern FT_Error (*FT_Outline_Render_dylibloader_wrapper_freetype)(FT_Library, FT_Outline *, FT_Raster_Params *);
 extern FT_Orientation (*FT_Outline_Get_Orientation_dylibloader_wrapper_freetype)(FT_Outline *);
 extern void (*FT_GlyphSlot_Embolden_dylibloader_wrapper_freetype)(FT_GlyphSlot);
-extern void (*FT_GlyphSlot_AdjustWeight_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_Fixed, FT_Fixed);
 extern void (*FT_GlyphSlot_Oblique_dylibloader_wrapper_freetype)(FT_GlyphSlot);
-extern void (*FT_GlyphSlot_Slant_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_Fixed, FT_Fixed);
 extern void *(*FT_Get_Sfnt_Table_dylibloader_wrapper_freetype)(FT_Face, FT_Sfnt_Tag);
 extern FT_Error (*FT_Load_Sfnt_Table_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_Long, FT_Byte *, FT_ULong *);
 extern FT_Error (*FT_Sfnt_Table_Info_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_ULong *, FT_ULong *);
@@ -403,9 +395,9 @@ extern FT_Long (*FT_Get_PS_Font_Value_dylibloader_wrapper_freetype)(FT_Face, PS_
 extern FT_Error (*FT_New_Glyph_dylibloader_wrapper_freetype)(FT_Library, FT_Glyph_Format, FT_Glyph *);
 extern FT_Error (*FT_Get_Glyph_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_Glyph *);
 extern FT_Error (*FT_Glyph_Copy_dylibloader_wrapper_freetype)(FT_Glyph, FT_Glyph *);
-extern FT_Error (*FT_Glyph_Transform_dylibloader_wrapper_freetype)(FT_Glyph, const FT_Matrix *, const FT_Vector *);
+extern FT_Error (*FT_Glyph_Transform_dylibloader_wrapper_freetype)(FT_Glyph, FT_Matrix *, FT_Vector *);
 extern void (*FT_Glyph_Get_CBox_dylibloader_wrapper_freetype)(FT_Glyph, FT_UInt, FT_BBox *);
-extern FT_Error (*FT_Glyph_To_Bitmap_dylibloader_wrapper_freetype)(FT_Glyph *, FT_Render_Mode, const FT_Vector *, FT_Bool);
+extern FT_Error (*FT_Glyph_To_Bitmap_dylibloader_wrapper_freetype)(FT_Glyph *, FT_Render_Mode, FT_Vector *, FT_Bool);
 extern void (*FT_Done_Glyph_dylibloader_wrapper_freetype)(FT_Glyph);
 extern void (*FT_Matrix_Multiply_dylibloader_wrapper_freetype)(const FT_Matrix *, FT_Matrix *);
 extern FT_Error (*FT_Matrix_Invert_dylibloader_wrapper_freetype)(FT_Matrix *);

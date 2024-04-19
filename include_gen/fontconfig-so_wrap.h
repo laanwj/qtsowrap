@@ -20,11 +20,8 @@
 #define FcDirCacheValid FcDirCacheValid_dylibloader_orig_fontconfig
 #define FcDirCacheClean FcDirCacheClean_dylibloader_orig_fontconfig
 #define FcCacheCreateTagFile FcCacheCreateTagFile_dylibloader_orig_fontconfig
-#define FcDirCacheCreateUUID FcDirCacheCreateUUID_dylibloader_orig_fontconfig
-#define FcDirCacheDeleteUUID FcDirCacheDeleteUUID_dylibloader_orig_fontconfig
 #define FcConfigHome FcConfigHome_dylibloader_orig_fontconfig
 #define FcConfigEnableHome FcConfigEnableHome_dylibloader_orig_fontconfig
-#define FcConfigGetFilename FcConfigGetFilename_dylibloader_orig_fontconfig
 #define FcConfigFilename FcConfigFilename_dylibloader_orig_fontconfig
 #define FcConfigCreate FcConfigCreate_dylibloader_orig_fontconfig
 #define FcConfigReference FcConfigReference_dylibloader_orig_fontconfig
@@ -49,9 +46,6 @@
 #define FcConfigSubstitute FcConfigSubstitute_dylibloader_orig_fontconfig
 #define FcConfigGetSysRoot FcConfigGetSysRoot_dylibloader_orig_fontconfig
 #define FcConfigSetSysRoot FcConfigSetSysRoot_dylibloader_orig_fontconfig
-#define FcConfigFileInfoIterInit FcConfigFileInfoIterInit_dylibloader_orig_fontconfig
-#define FcConfigFileInfoIterNext FcConfigFileInfoIterNext_dylibloader_orig_fontconfig
-#define FcConfigFileInfoIterGet FcConfigFileInfoIterGet_dylibloader_orig_fontconfig
 #define FcCharSetCreate FcCharSetCreate_dylibloader_orig_fontconfig
 #define FcCharSetNew FcCharSetNew_dylibloader_orig_fontconfig
 #define FcCharSetDestroy FcCharSetDestroy_dylibloader_orig_fontconfig
@@ -86,7 +80,6 @@
 #define FcDirCacheLoadFile FcDirCacheLoadFile_dylibloader_orig_fontconfig
 #define FcDirCacheUnload FcDirCacheUnload_dylibloader_orig_fontconfig
 #define FcFreeTypeQuery FcFreeTypeQuery_dylibloader_orig_fontconfig
-#define FcFreeTypeQueryAll FcFreeTypeQueryAll_dylibloader_orig_fontconfig
 #define FcFontSetCreate FcFontSetCreate_dylibloader_orig_fontconfig
 #define FcFontSetDestroy FcFontSetDestroy_dylibloader_orig_fontconfig
 #define FcFontSetAdd FcFontSetAdd_dylibloader_orig_fontconfig
@@ -146,7 +139,6 @@
 #define FcNameRegisterConstants FcNameRegisterConstants_dylibloader_orig_fontconfig
 #define FcNameUnregisterConstants FcNameUnregisterConstants_dylibloader_orig_fontconfig
 #define FcNameGetConstant FcNameGetConstant_dylibloader_orig_fontconfig
-#define FcNameGetConstantFor FcNameGetConstantFor_dylibloader_orig_fontconfig
 #define FcNameConstant FcNameConstant_dylibloader_orig_fontconfig
 #define FcNameParse FcNameParse_dylibloader_orig_fontconfig
 #define FcNameUnparse FcNameUnparse_dylibloader_orig_fontconfig
@@ -158,7 +150,6 @@
 #define FcValueEqual FcValueEqual_dylibloader_orig_fontconfig
 #define FcValueSave FcValueSave_dylibloader_orig_fontconfig
 #define FcPatternDestroy FcPatternDestroy_dylibloader_orig_fontconfig
-#define FcPatternObjectCount FcPatternObjectCount_dylibloader_orig_fontconfig
 #define FcPatternEqual FcPatternEqual_dylibloader_orig_fontconfig
 #define FcPatternEqualSubset FcPatternEqualSubset_dylibloader_orig_fontconfig
 #define FcPatternHash FcPatternHash_dylibloader_orig_fontconfig
@@ -192,18 +183,8 @@
 #define FcRangeDestroy FcRangeDestroy_dylibloader_orig_fontconfig
 #define FcRangeCopy FcRangeCopy_dylibloader_orig_fontconfig
 #define FcRangeGetDouble FcRangeGetDouble_dylibloader_orig_fontconfig
-#define FcPatternIterStart FcPatternIterStart_dylibloader_orig_fontconfig
-#define FcPatternIterNext FcPatternIterNext_dylibloader_orig_fontconfig
-#define FcPatternIterEqual FcPatternIterEqual_dylibloader_orig_fontconfig
-#define FcPatternFindIter FcPatternFindIter_dylibloader_orig_fontconfig
-#define FcPatternIterIsValid FcPatternIterIsValid_dylibloader_orig_fontconfig
-#define FcPatternIterGetObject FcPatternIterGetObject_dylibloader_orig_fontconfig
-#define FcPatternIterValueCount FcPatternIterValueCount_dylibloader_orig_fontconfig
-#define FcPatternIterGetValue FcPatternIterGetValue_dylibloader_orig_fontconfig
 #define FcWeightFromOpenType FcWeightFromOpenType_dylibloader_orig_fontconfig
-#define FcWeightFromOpenTypeDouble FcWeightFromOpenTypeDouble_dylibloader_orig_fontconfig
 #define FcWeightToOpenType FcWeightToOpenType_dylibloader_orig_fontconfig
-#define FcWeightToOpenTypeDouble FcWeightToOpenTypeDouble_dylibloader_orig_fontconfig
 #define FcStrCopy FcStrCopy_dylibloader_orig_fontconfig
 #define FcStrCopyFilename FcStrCopyFilename_dylibloader_orig_fontconfig
 #define FcStrPlus FcStrPlus_dylibloader_orig_fontconfig
@@ -218,7 +199,6 @@
 #define FcUcs4ToUtf8 FcUcs4ToUtf8_dylibloader_orig_fontconfig
 #define FcUtf16ToUcs4 FcUtf16ToUcs4_dylibloader_orig_fontconfig
 #define FcUtf16Len FcUtf16Len_dylibloader_orig_fontconfig
-#define FcStrBuildFilename FcStrBuildFilename_dylibloader_orig_fontconfig
 #define FcStrDirname FcStrDirname_dylibloader_orig_fontconfig
 #define FcStrBasename FcStrBasename_dylibloader_orig_fontconfig
 #define FcStrSetCreate FcStrSetCreate_dylibloader_orig_fontconfig
@@ -256,11 +236,8 @@
 #undef FcDirCacheValid
 #undef FcDirCacheClean
 #undef FcCacheCreateTagFile
-#undef FcDirCacheCreateUUID
-#undef FcDirCacheDeleteUUID
 #undef FcConfigHome
 #undef FcConfigEnableHome
-#undef FcConfigGetFilename
 #undef FcConfigFilename
 #undef FcConfigCreate
 #undef FcConfigReference
@@ -285,9 +262,6 @@
 #undef FcConfigSubstitute
 #undef FcConfigGetSysRoot
 #undef FcConfigSetSysRoot
-#undef FcConfigFileInfoIterInit
-#undef FcConfigFileInfoIterNext
-#undef FcConfigFileInfoIterGet
 #undef FcCharSetCreate
 #undef FcCharSetNew
 #undef FcCharSetDestroy
@@ -322,7 +296,6 @@
 #undef FcDirCacheLoadFile
 #undef FcDirCacheUnload
 #undef FcFreeTypeQuery
-#undef FcFreeTypeQueryAll
 #undef FcFontSetCreate
 #undef FcFontSetDestroy
 #undef FcFontSetAdd
@@ -382,7 +355,6 @@
 #undef FcNameRegisterConstants
 #undef FcNameUnregisterConstants
 #undef FcNameGetConstant
-#undef FcNameGetConstantFor
 #undef FcNameConstant
 #undef FcNameParse
 #undef FcNameUnparse
@@ -394,7 +366,6 @@
 #undef FcValueEqual
 #undef FcValueSave
 #undef FcPatternDestroy
-#undef FcPatternObjectCount
 #undef FcPatternEqual
 #undef FcPatternEqualSubset
 #undef FcPatternHash
@@ -428,18 +399,8 @@
 #undef FcRangeDestroy
 #undef FcRangeCopy
 #undef FcRangeGetDouble
-#undef FcPatternIterStart
-#undef FcPatternIterNext
-#undef FcPatternIterEqual
-#undef FcPatternFindIter
-#undef FcPatternIterIsValid
-#undef FcPatternIterGetObject
-#undef FcPatternIterValueCount
-#undef FcPatternIterGetValue
 #undef FcWeightFromOpenType
-#undef FcWeightFromOpenTypeDouble
 #undef FcWeightToOpenType
-#undef FcWeightToOpenTypeDouble
 #undef FcStrCopy
 #undef FcStrCopyFilename
 #undef FcStrPlus
@@ -454,7 +415,6 @@
 #undef FcUcs4ToUtf8
 #undef FcUtf16ToUcs4
 #undef FcUtf16Len
-#undef FcStrBuildFilename
 #undef FcStrDirname
 #undef FcStrBasename
 #undef FcStrSetCreate
@@ -492,11 +452,8 @@ extern "C" {
 #define FcDirCacheValid FcDirCacheValid_dylibloader_wrapper_fontconfig
 #define FcDirCacheClean FcDirCacheClean_dylibloader_wrapper_fontconfig
 #define FcCacheCreateTagFile FcCacheCreateTagFile_dylibloader_wrapper_fontconfig
-#define FcDirCacheCreateUUID FcDirCacheCreateUUID_dylibloader_wrapper_fontconfig
-#define FcDirCacheDeleteUUID FcDirCacheDeleteUUID_dylibloader_wrapper_fontconfig
 #define FcConfigHome FcConfigHome_dylibloader_wrapper_fontconfig
 #define FcConfigEnableHome FcConfigEnableHome_dylibloader_wrapper_fontconfig
-#define FcConfigGetFilename FcConfigGetFilename_dylibloader_wrapper_fontconfig
 #define FcConfigFilename FcConfigFilename_dylibloader_wrapper_fontconfig
 #define FcConfigCreate FcConfigCreate_dylibloader_wrapper_fontconfig
 #define FcConfigReference FcConfigReference_dylibloader_wrapper_fontconfig
@@ -521,9 +478,6 @@ extern "C" {
 #define FcConfigSubstitute FcConfigSubstitute_dylibloader_wrapper_fontconfig
 #define FcConfigGetSysRoot FcConfigGetSysRoot_dylibloader_wrapper_fontconfig
 #define FcConfigSetSysRoot FcConfigSetSysRoot_dylibloader_wrapper_fontconfig
-#define FcConfigFileInfoIterInit FcConfigFileInfoIterInit_dylibloader_wrapper_fontconfig
-#define FcConfigFileInfoIterNext FcConfigFileInfoIterNext_dylibloader_wrapper_fontconfig
-#define FcConfigFileInfoIterGet FcConfigFileInfoIterGet_dylibloader_wrapper_fontconfig
 #define FcCharSetCreate FcCharSetCreate_dylibloader_wrapper_fontconfig
 #define FcCharSetNew FcCharSetNew_dylibloader_wrapper_fontconfig
 #define FcCharSetDestroy FcCharSetDestroy_dylibloader_wrapper_fontconfig
@@ -558,7 +512,6 @@ extern "C" {
 #define FcDirCacheLoadFile FcDirCacheLoadFile_dylibloader_wrapper_fontconfig
 #define FcDirCacheUnload FcDirCacheUnload_dylibloader_wrapper_fontconfig
 #define FcFreeTypeQuery FcFreeTypeQuery_dylibloader_wrapper_fontconfig
-#define FcFreeTypeQueryAll FcFreeTypeQueryAll_dylibloader_wrapper_fontconfig
 #define FcFontSetCreate FcFontSetCreate_dylibloader_wrapper_fontconfig
 #define FcFontSetDestroy FcFontSetDestroy_dylibloader_wrapper_fontconfig
 #define FcFontSetAdd FcFontSetAdd_dylibloader_wrapper_fontconfig
@@ -618,7 +571,6 @@ extern "C" {
 #define FcNameRegisterConstants FcNameRegisterConstants_dylibloader_wrapper_fontconfig
 #define FcNameUnregisterConstants FcNameUnregisterConstants_dylibloader_wrapper_fontconfig
 #define FcNameGetConstant FcNameGetConstant_dylibloader_wrapper_fontconfig
-#define FcNameGetConstantFor FcNameGetConstantFor_dylibloader_wrapper_fontconfig
 #define FcNameConstant FcNameConstant_dylibloader_wrapper_fontconfig
 #define FcNameParse FcNameParse_dylibloader_wrapper_fontconfig
 #define FcNameUnparse FcNameUnparse_dylibloader_wrapper_fontconfig
@@ -630,7 +582,6 @@ extern "C" {
 #define FcValueEqual FcValueEqual_dylibloader_wrapper_fontconfig
 #define FcValueSave FcValueSave_dylibloader_wrapper_fontconfig
 #define FcPatternDestroy FcPatternDestroy_dylibloader_wrapper_fontconfig
-#define FcPatternObjectCount FcPatternObjectCount_dylibloader_wrapper_fontconfig
 #define FcPatternEqual FcPatternEqual_dylibloader_wrapper_fontconfig
 #define FcPatternEqualSubset FcPatternEqualSubset_dylibloader_wrapper_fontconfig
 #define FcPatternHash FcPatternHash_dylibloader_wrapper_fontconfig
@@ -664,18 +615,8 @@ extern "C" {
 #define FcRangeDestroy FcRangeDestroy_dylibloader_wrapper_fontconfig
 #define FcRangeCopy FcRangeCopy_dylibloader_wrapper_fontconfig
 #define FcRangeGetDouble FcRangeGetDouble_dylibloader_wrapper_fontconfig
-#define FcPatternIterStart FcPatternIterStart_dylibloader_wrapper_fontconfig
-#define FcPatternIterNext FcPatternIterNext_dylibloader_wrapper_fontconfig
-#define FcPatternIterEqual FcPatternIterEqual_dylibloader_wrapper_fontconfig
-#define FcPatternFindIter FcPatternFindIter_dylibloader_wrapper_fontconfig
-#define FcPatternIterIsValid FcPatternIterIsValid_dylibloader_wrapper_fontconfig
-#define FcPatternIterGetObject FcPatternIterGetObject_dylibloader_wrapper_fontconfig
-#define FcPatternIterValueCount FcPatternIterValueCount_dylibloader_wrapper_fontconfig
-#define FcPatternIterGetValue FcPatternIterGetValue_dylibloader_wrapper_fontconfig
 #define FcWeightFromOpenType FcWeightFromOpenType_dylibloader_wrapper_fontconfig
-#define FcWeightFromOpenTypeDouble FcWeightFromOpenTypeDouble_dylibloader_wrapper_fontconfig
 #define FcWeightToOpenType FcWeightToOpenType_dylibloader_wrapper_fontconfig
-#define FcWeightToOpenTypeDouble FcWeightToOpenTypeDouble_dylibloader_wrapper_fontconfig
 #define FcStrCopy FcStrCopy_dylibloader_wrapper_fontconfig
 #define FcStrCopyFilename FcStrCopyFilename_dylibloader_wrapper_fontconfig
 #define FcStrPlus FcStrPlus_dylibloader_wrapper_fontconfig
@@ -690,7 +631,6 @@ extern "C" {
 #define FcUcs4ToUtf8 FcUcs4ToUtf8_dylibloader_wrapper_fontconfig
 #define FcUtf16ToUcs4 FcUtf16ToUcs4_dylibloader_wrapper_fontconfig
 #define FcUtf16Len FcUtf16Len_dylibloader_wrapper_fontconfig
-#define FcStrBuildFilename FcStrBuildFilename_dylibloader_wrapper_fontconfig
 #define FcStrDirname FcStrDirname_dylibloader_wrapper_fontconfig
 #define FcStrBasename FcStrBasename_dylibloader_wrapper_fontconfig
 #define FcStrSetCreate FcStrSetCreate_dylibloader_wrapper_fontconfig
@@ -724,12 +664,9 @@ extern int (*FcCacheNumFont_dylibloader_wrapper_fontconfig)(const FcCache *);
 extern FcBool (*FcDirCacheUnlink_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcConfig *);
 extern FcBool (*FcDirCacheValid_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcBool (*FcDirCacheClean_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcBool);
-extern void (*FcCacheCreateTagFile_dylibloader_wrapper_fontconfig)(FcConfig *);
-extern FcBool (*FcDirCacheCreateUUID_dylibloader_wrapper_fontconfig)(FcChar8 *, FcBool, FcConfig *);
-extern FcBool (*FcDirCacheDeleteUUID_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcConfig *);
+extern void (*FcCacheCreateTagFile_dylibloader_wrapper_fontconfig)(const FcConfig *);
 extern FcChar8 *(*FcConfigHome_dylibloader_wrapper_fontconfig)(void);
 extern FcBool (*FcConfigEnableHome_dylibloader_wrapper_fontconfig)(FcBool);
-extern FcChar8 *(*FcConfigGetFilename_dylibloader_wrapper_fontconfig)(FcConfig *, const FcChar8 *);
 extern FcChar8 *(*FcConfigFilename_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcConfig *(*FcConfigCreate_dylibloader_wrapper_fontconfig)(void);
 extern FcConfig *(*FcConfigReference_dylibloader_wrapper_fontconfig)(FcConfig *);
@@ -743,7 +680,7 @@ extern FcStrList *(*FcConfigGetConfigDirs_dylibloader_wrapper_fontconfig)(FcConf
 extern FcStrList *(*FcConfigGetConfigFiles_dylibloader_wrapper_fontconfig)(FcConfig *);
 extern FcChar8 *(*FcConfigGetCache_dylibloader_wrapper_fontconfig)(FcConfig *);
 extern FcBlanks *(*FcConfigGetBlanks_dylibloader_wrapper_fontconfig)(FcConfig *);
-extern FcStrList *(*FcConfigGetCacheDirs_dylibloader_wrapper_fontconfig)(FcConfig *);
+extern FcStrList *(*FcConfigGetCacheDirs_dylibloader_wrapper_fontconfig)(const FcConfig *);
 extern int (*FcConfigGetRescanInterval_dylibloader_wrapper_fontconfig)(FcConfig *);
 extern FcBool (*FcConfigSetRescanInterval_dylibloader_wrapper_fontconfig)(FcConfig *, int);
 extern FcFontSet *(*FcConfigGetFonts_dylibloader_wrapper_fontconfig)(FcConfig *, FcSetName);
@@ -754,9 +691,6 @@ extern FcBool (*FcConfigSubstituteWithPat_dylibloader_wrapper_fontconfig)(FcConf
 extern FcBool (*FcConfigSubstitute_dylibloader_wrapper_fontconfig)(FcConfig *, FcPattern *, FcMatchKind);
 extern const FcChar8 *(*FcConfigGetSysRoot_dylibloader_wrapper_fontconfig)(const FcConfig *);
 extern void (*FcConfigSetSysRoot_dylibloader_wrapper_fontconfig)(FcConfig *, const FcChar8 *);
-extern void (*FcConfigFileInfoIterInit_dylibloader_wrapper_fontconfig)(FcConfig *, FcConfigFileInfoIter *);
-extern FcBool (*FcConfigFileInfoIterNext_dylibloader_wrapper_fontconfig)(FcConfig *, FcConfigFileInfoIter *);
-extern FcBool (*FcConfigFileInfoIterGet_dylibloader_wrapper_fontconfig)(FcConfig *, FcConfigFileInfoIter *, FcChar8 **, FcChar8 **, FcBool *);
 extern FcCharSet *(*FcCharSetCreate_dylibloader_wrapper_fontconfig)(void);
 extern FcCharSet *(*FcCharSetNew_dylibloader_wrapper_fontconfig)(void);
 extern void (*FcCharSetDestroy_dylibloader_wrapper_fontconfig)(FcCharSet *);
@@ -790,8 +724,7 @@ extern FcCache *(*FcDirCacheRescan_dylibloader_wrapper_fontconfig)(const FcChar8
 extern FcCache *(*FcDirCacheRead_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcBool, FcConfig *);
 extern FcCache *(*FcDirCacheLoadFile_dylibloader_wrapper_fontconfig)(const FcChar8 *, struct stat *);
 extern void (*FcDirCacheUnload_dylibloader_wrapper_fontconfig)(FcCache *);
-extern FcPattern *(*FcFreeTypeQuery_dylibloader_wrapper_fontconfig)(const FcChar8 *, unsigned int, FcBlanks *, int *);
-extern unsigned int (*FcFreeTypeQueryAll_dylibloader_wrapper_fontconfig)(const FcChar8 *, unsigned int, FcBlanks *, int *, FcFontSet *);
+extern FcPattern *(*FcFreeTypeQuery_dylibloader_wrapper_fontconfig)(const FcChar8 *, int, FcBlanks *, int *);
 extern FcFontSet *(*FcFontSetCreate_dylibloader_wrapper_fontconfig)(void);
 extern void (*FcFontSetDestroy_dylibloader_wrapper_fontconfig)(FcFontSet *);
 extern FcBool (*FcFontSetAdd_dylibloader_wrapper_fontconfig)(FcFontSet *, FcPattern *);
@@ -851,7 +784,6 @@ extern const FcObjectType *(*FcNameGetObjectType_dylibloader_wrapper_fontconfig)
 extern FcBool (*FcNameRegisterConstants_dylibloader_wrapper_fontconfig)(const FcConstant *, int);
 extern FcBool (*FcNameUnregisterConstants_dylibloader_wrapper_fontconfig)(const FcConstant *, int);
 extern const FcConstant *(*FcNameGetConstant_dylibloader_wrapper_fontconfig)(const FcChar8 *);
-extern const FcConstant *(*FcNameGetConstantFor_dylibloader_wrapper_fontconfig)(const FcChar8 *, const char *);
 extern FcBool (*FcNameConstant_dylibloader_wrapper_fontconfig)(const FcChar8 *, int *);
 extern FcPattern *(*FcNameParse_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcChar8 *(*FcNameUnparse_dylibloader_wrapper_fontconfig)(FcPattern *);
@@ -863,7 +795,6 @@ extern void (*FcValueDestroy_dylibloader_wrapper_fontconfig)(FcValue);
 extern FcBool (*FcValueEqual_dylibloader_wrapper_fontconfig)(FcValue, FcValue);
 extern FcValue (*FcValueSave_dylibloader_wrapper_fontconfig)(FcValue);
 extern void (*FcPatternDestroy_dylibloader_wrapper_fontconfig)(FcPattern *);
-extern int (*FcPatternObjectCount_dylibloader_wrapper_fontconfig)(const FcPattern *);
 extern FcBool (*FcPatternEqual_dylibloader_wrapper_fontconfig)(const FcPattern *, const FcPattern *);
 extern FcBool (*FcPatternEqualSubset_dylibloader_wrapper_fontconfig)(const FcPattern *, const FcPattern *, const FcObjectSet *);
 extern FcChar32 (*FcPatternHash_dylibloader_wrapper_fontconfig)(const FcPattern *);
@@ -897,18 +828,8 @@ extern FcRange *(*FcRangeCreateInteger_dylibloader_wrapper_fontconfig)(FcChar32,
 extern void (*FcRangeDestroy_dylibloader_wrapper_fontconfig)(FcRange *);
 extern FcRange *(*FcRangeCopy_dylibloader_wrapper_fontconfig)(const FcRange *);
 extern FcBool (*FcRangeGetDouble_dylibloader_wrapper_fontconfig)(const FcRange *, double *, double *);
-extern void (*FcPatternIterStart_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *);
-extern FcBool (*FcPatternIterNext_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *);
-extern FcBool (*FcPatternIterEqual_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *, const FcPattern *, FcPatternIter *);
-extern FcBool (*FcPatternFindIter_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *, const char *);
-extern FcBool (*FcPatternIterIsValid_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *);
-extern const char *(*FcPatternIterGetObject_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *);
-extern int (*FcPatternIterValueCount_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *);
-extern FcResult (*FcPatternIterGetValue_dylibloader_wrapper_fontconfig)(const FcPattern *, FcPatternIter *, int, FcValue *, FcValueBinding *);
 extern int (*FcWeightFromOpenType_dylibloader_wrapper_fontconfig)(int);
-extern double (*FcWeightFromOpenTypeDouble_dylibloader_wrapper_fontconfig)(double);
 extern int (*FcWeightToOpenType_dylibloader_wrapper_fontconfig)(int);
-extern double (*FcWeightToOpenTypeDouble_dylibloader_wrapper_fontconfig)(double);
 extern FcChar8 *(*FcStrCopy_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcChar8 *(*FcStrCopyFilename_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcChar8 *(*FcStrPlus_dylibloader_wrapper_fontconfig)(const FcChar8 *, const FcChar8 *);
@@ -923,7 +844,6 @@ extern FcBool (*FcUtf8Len_dylibloader_wrapper_fontconfig)(const FcChar8 *, int, 
 extern int (*FcUcs4ToUtf8_dylibloader_wrapper_fontconfig)(FcChar32, FcChar8 [6]);
 extern int (*FcUtf16ToUcs4_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcEndian, FcChar32 *, int);
 extern FcBool (*FcUtf16Len_dylibloader_wrapper_fontconfig)(const FcChar8 *, FcEndian, int, int *, int *);
-extern FcChar8 *(*FcStrBuildFilename_dylibloader_wrapper_fontconfig)(const FcChar8 *, ...);
 extern FcChar8 *(*FcStrDirname_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcChar8 *(*FcStrBasename_dylibloader_wrapper_fontconfig)(const FcChar8 *);
 extern FcStrSet *(*FcStrSetCreate_dylibloader_wrapper_fontconfig)(void);
@@ -944,7 +864,7 @@ extern FcCharSet *(*FcFreeTypeCharSetAndSpacing_dylibloader_wrapper_fontconfig)(
 extern FcCharSet *(*FcFreeTypeCharSet_dylibloader_wrapper_fontconfig)(FT_Face, FcBlanks *);
 extern FcResult (*FcPatternGetFTFace_dylibloader_wrapper_fontconfig)(const FcPattern *, const char *, int, FT_Face *);
 extern FcBool (*FcPatternAddFTFace_dylibloader_wrapper_fontconfig)(FcPattern *, const char *, const FT_Face);
-extern FcPattern *(*FcFreeTypeQueryFace_dylibloader_wrapper_fontconfig)(const FT_Face, const FcChar8 *, unsigned int, FcBlanks *);
+extern FcPattern *(*FcFreeTypeQueryFace_dylibloader_wrapper_fontconfig)(const FT_Face, const FcChar8 *, int, FcBlanks *);
 int initialize_fontconfig(int verbose);
 #ifdef __cplusplus
 }

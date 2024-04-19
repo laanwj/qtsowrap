@@ -81,7 +81,6 @@ install(FILES
   ../include/freetype/ftcache.h
   ../include/freetype/ftsynth.h
   ../include/freetype/ftglyph.h
-  ../include/freetype/otsvg.h
   ../include/freetype/ftbbox.h
   ../include/freetype/ftgxval.h
   ../include/freetype/tttags.h
@@ -130,25 +129,45 @@ install(FILES
 )
 install(FILES
   ../include/xcb/xc_misc.h
+  ../include/xcb/xcb_ewmh.h
+  ../include/xcb/xcb_atom.h
   ../include/xcb/xfixes.h
   ../include/xcb/render.h
   ../include/xcb/xcbext.h
+  ../include/xcb/xcb_util.h
+  ../include/xcb/xf86dri.h
   ../include/xcb/xcb_bitops.h
+  ../include/xcb/xtest.h
+  ../include/xcb/xvmc.h
   ../include/xcb/dri3.h
   ../include/xcb/bigreq.h
   ../include/xcb/shape.h
+  ../include/xcb/xevie.h
+  ../include/xcb/dpms.h
+  ../include/xcb/xv.h
   ../include/xcb/randr.h
   ../include/xcb/xcb.h
+  ../include/xcb/xcb_event.h
+  ../include/xcb/ge.h
   ../include/xcb/sync.h
+  ../include/xcb/screensaver.h
   ../include/xcb/xcb_pixel.h
+  ../include/xcb/record.h
+  ../include/xcb/xselinux.h
   ../include/xcb/dri2.h
   ../include/xcb/xcb_icccm.h
+  ../include/xcb/res.h
   ../include/xcb/xproto.h
+  ../include/xcb/damage.h
   ../include/xcb/xcb_keysyms.h
   ../include/xcb/xinerama.h
+  ../include/xcb/xprint.h
   ../include/xcb/xcb_image.h
+  ../include/xcb/xinput.h
+  ../include/xcb/xcb_aux.h
   ../include/xcb/present.h
   ../include/xcb/glx.h
+  ../include/xcb/composite.h
   ../include/xcb/xcb_renderutil.h
   ../include/xcb/xkb.h
   ../include/xcb/shm.h

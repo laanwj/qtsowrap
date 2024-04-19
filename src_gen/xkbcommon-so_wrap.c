@@ -9,7 +9,6 @@
 #define xkb_keysym_from_name xkb_keysym_from_name_dylibloader_orig_xkbcommon
 #define xkb_keysym_to_utf8 xkb_keysym_to_utf8_dylibloader_orig_xkbcommon
 #define xkb_keysym_to_utf32 xkb_keysym_to_utf32_dylibloader_orig_xkbcommon
-#define xkb_utf32_to_keysym xkb_utf32_to_keysym_dylibloader_orig_xkbcommon
 #define xkb_keysym_to_upper xkb_keysym_to_upper_dylibloader_orig_xkbcommon
 #define xkb_keysym_to_lower xkb_keysym_to_lower_dylibloader_orig_xkbcommon
 #define xkb_context_new xkb_context_new_dylibloader_orig_xkbcommon
@@ -51,7 +50,6 @@
 #define xkb_keymap_led_get_index xkb_keymap_led_get_index_dylibloader_orig_xkbcommon
 #define xkb_keymap_num_layouts_for_key xkb_keymap_num_layouts_for_key_dylibloader_orig_xkbcommon
 #define xkb_keymap_num_levels_for_key xkb_keymap_num_levels_for_key_dylibloader_orig_xkbcommon
-#define xkb_keymap_key_get_mods_for_level xkb_keymap_key_get_mods_for_level_dylibloader_orig_xkbcommon
 #define xkb_keymap_key_get_syms_by_level xkb_keymap_key_get_syms_by_level_dylibloader_orig_xkbcommon
 #define xkb_keymap_key_repeats xkb_keymap_key_repeats_dylibloader_orig_xkbcommon
 #define xkb_state_new xkb_state_new_dylibloader_orig_xkbcommon
@@ -86,7 +84,6 @@
 #undef xkb_keysym_from_name
 #undef xkb_keysym_to_utf8
 #undef xkb_keysym_to_utf32
-#undef xkb_utf32_to_keysym
 #undef xkb_keysym_to_upper
 #undef xkb_keysym_to_lower
 #undef xkb_context_new
@@ -128,7 +125,6 @@
 #undef xkb_keymap_led_get_index
 #undef xkb_keymap_num_layouts_for_key
 #undef xkb_keymap_num_levels_for_key
-#undef xkb_keymap_key_get_mods_for_level
 #undef xkb_keymap_key_get_syms_by_level
 #undef xkb_keymap_key_repeats
 #undef xkb_state_new
@@ -164,7 +160,6 @@ int (*xkb_keysym_get_name_dylibloader_wrapper_xkbcommon)(xkb_keysym_t, char *, s
 xkb_keysym_t (*xkb_keysym_from_name_dylibloader_wrapper_xkbcommon)(const char *, enum xkb_keysym_flags);
 int (*xkb_keysym_to_utf8_dylibloader_wrapper_xkbcommon)(xkb_keysym_t, char *, size_t);
 uint32_t (*xkb_keysym_to_utf32_dylibloader_wrapper_xkbcommon)(xkb_keysym_t);
-xkb_keysym_t (*xkb_utf32_to_keysym_dylibloader_wrapper_xkbcommon)(uint32_t);
 xkb_keysym_t (*xkb_keysym_to_upper_dylibloader_wrapper_xkbcommon)(xkb_keysym_t);
 xkb_keysym_t (*xkb_keysym_to_lower_dylibloader_wrapper_xkbcommon)(xkb_keysym_t);
 struct xkb_context *(*xkb_context_new_dylibloader_wrapper_xkbcommon)(enum xkb_context_flags);
@@ -206,7 +201,6 @@ const char *(*xkb_keymap_led_get_name_dylibloader_wrapper_xkbcommon)(struct xkb_
 xkb_led_index_t (*xkb_keymap_led_get_index_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, const char *);
 xkb_layout_index_t (*xkb_keymap_num_layouts_for_key_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, xkb_keycode_t);
 xkb_level_index_t (*xkb_keymap_num_levels_for_key_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, xkb_keycode_t, xkb_layout_index_t);
-size_t (*xkb_keymap_key_get_mods_for_level_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, xkb_keycode_t, xkb_layout_index_t, xkb_level_index_t, xkb_mod_mask_t *, size_t);
 int (*xkb_keymap_key_get_syms_by_level_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, xkb_keycode_t, xkb_layout_index_t, xkb_level_index_t, const xkb_keysym_t **);
 int (*xkb_keymap_key_repeats_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *, xkb_keycode_t);
 struct xkb_state *(*xkb_state_new_dylibloader_wrapper_xkbcommon)(struct xkb_keymap *);
@@ -276,15 +270,6 @@ int initialize_xkbcommon(int verbose) {
   }
 /* xkb_keysym_to_utf32 */
   *(void **) (&xkb_keysym_to_utf32_dylibloader_wrapper_xkbcommon) = dlsym(handle, "xkb_keysym_to_utf32");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xkb_utf32_to_keysym */
-  *(void **) (&xkb_utf32_to_keysym_dylibloader_wrapper_xkbcommon) = dlsym(handle, "xkb_utf32_to_keysym");
   if (verbose) {
     error = dlerror();
     if (error != NULL) {
@@ -654,15 +639,6 @@ int initialize_xkbcommon(int verbose) {
   }
 /* xkb_keymap_num_levels_for_key */
   *(void **) (&xkb_keymap_num_levels_for_key_dylibloader_wrapper_xkbcommon) = dlsym(handle, "xkb_keymap_num_levels_for_key");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xkb_keymap_key_get_mods_for_level */
-  *(void **) (&xkb_keymap_key_get_mods_for_level_dylibloader_wrapper_xkbcommon) = dlsym(handle, "xkb_keymap_key_get_mods_for_level");
   if (verbose) {
     error = dlerror();
     if (error != NULL) {
