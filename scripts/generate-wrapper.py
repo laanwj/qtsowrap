@@ -37,7 +37,7 @@ except:
     sys.exit(1)
 
 VERSION="0.5"
-URL="https://github.com/laanwj/qtsowrap"
+URL="https://github.com/hpvb/dynload-wrapper (patched)"
 PROGNAME=sys.argv[0]
 FLAGS=""
 
@@ -71,7 +71,6 @@ def parse_header(filename, omit_prefix, initname, ignore_headers = [], ignore_al
 
     ast = parse_file(filename, use_cpp=True, cpp_path='gcc', cpp_args=['-E', '-include', f'{mydir}/attributes.h', '-I', f'{mydir}/fake_libc_include'] + extra_args)
 
-    ignore_functions = []
     functions = []
     sym_definitions = []
 
@@ -101,10 +100,8 @@ def parse_header(filename, omit_prefix, initname, ignore_headers = [], ignore_al
                         break
 
             if skip:
-                ignore_functions.append(ext.name)
                 continue
 
-            ignore_functions.append(ext.name)
             functions.append(ext.name)
 
             for param in ext.type.args:
@@ -122,9 +119,9 @@ def parse_header(filename, omit_prefix, initname, ignore_headers = [], ignore_al
 
             sym_definitions.append(stringify_declaration(ext))
 
-    return (ignore_functions, functions, sym_definitions)
+    return (functions, sym_definitions)
 
-def generate_header(sysincludes, functions, initname, ignore_functions):
+def generate_header(sysincludes, functions, initname):
     retval = []
     retval.append("// This file is generated. Do not edit!")
     retval.append(f"// see {URL} for details")
@@ -133,7 +130,7 @@ def generate_header(sysincludes, functions, initname, ignore_functions):
     retval.append("//")
     retval.append("#include <stdint.h>\n")
 
-    for function in ignore_functions:
+    for function in functions:
         retval.append(f"#define {function} {function}_dylibloader_orig_{initname}")
 
     for include in sysincludes:
@@ -142,15 +139,15 @@ def generate_header(sysincludes, functions, initname, ignore_functions):
         else:
             retval.append(f"#include \"{include}\"")
 
-    for function in ignore_functions:
+    for function in functions:
         retval.append(f"#undef {function}")
 
     retval.append("")
     return "\n".join(retval)
 
-def write_implementation(filename, soname, sysincludes, initname, functions, sym_definitions, ignore_functions):
+def write_implementation(filename, soname, sysincludes, initname, functions, sym_definitions):
     with open(filename, 'w') as file:
-        file.write(generate_header(sysincludes, functions, initname, ignore_functions))
+        file.write(generate_header(sysincludes, functions, initname))
         file.write("#include <dlfcn.h>\n")
         file.write("#include <stdio.h>\n")
 
@@ -183,11 +180,11 @@ def write_implementation(filename, soname, sysincludes, initname, functions, sym
         file.write("return 0;\n");
         file.write("}\n")
 
-def write_header(filename, sysincludes, initname, functions, sym_definitions, ignore_functions):
+def write_header(filename, sysincludes, initname, functions, sym_definitions):
     with open(filename, 'w') as file:
         file.write(f"#ifndef DYLIBLOAD_WRAPPER_{initname.upper()}\n")
         file.write(f"#define DYLIBLOAD_WRAPPER_{initname.upper()}\n")
-        file.write(generate_header(sysincludes, functions, initname, ignore_functions))
+        file.write(generate_header(sysincludes, functions, initname))
         file.write("#ifdef __cplusplus\n")
         file.write("extern \"C\" {\n")
         file.write("#endif\n")
@@ -231,16 +228,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     FLAGS = " ".join(sys.argv)
 
-    ignore_functions = []
     functions = []
     sym_definitions = []
 
     for filename in args.include:
-        igf, f, s = parse_header(filename, args.omit_prefix, args.init_name, args.ignore_headers, args.ignore_other, args.include, args.include_dir)
-        for item in igf:
-            if item not in ignore_functions:
-                ignore_functions.append(item)
-
+        f, s = parse_header(filename, args.omit_prefix, args.init_name, args.ignore_headers, args.ignore_other, args.include, args.include_dir)
         for item in f:
             if item not in functions:
                 functions.append(item)
@@ -249,5 +241,5 @@ if __name__ == "__main__":
             if item not in sym_definitions:
                 sym_definitions.append(item)
 
-    write_implementation(args.output_implementation, args.soname, args.sys_include, args.init_name, functions, sym_definitions, ignore_functions)
-    write_header(args.output_header, args.sys_include, args.init_name, functions, sym_definitions, ignore_functions)
+    write_implementation(args.output_implementation, args.soname, args.sys_include, args.init_name, functions, sym_definitions)
+    write_header(args.output_header, args.sys_include, args.init_name, functions, sym_definitions)
