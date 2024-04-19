@@ -1,14 +1,22 @@
 # qtsowrap
 
-This is a library that wraps Qt's Linux (only X11 for now) dependencies in a way so that they are loaded at run time, and thus not necessary in the compile process.
+This is a library that wraps Qt's Linux system integration dependencies in a way so that they are loaded at run time, and thus not necessary in the compile process. The aim is to wrap Qt's entire interface with the operating system.
 
-It is entirely auto-generated. (scripts/gen.py)[scripts/gen.py] contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these.
+The source is entirely auto-generated from upstream headers. (scripts/gen.py)[scripts/gen.py] contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
+
+For now it handles the boilerplate for:
+
+- xcb and sublibraries
+- xkb
+- fontconfig
+- freetype
 
 ## why
 
-- Reduce the number of libraries in 'depends'. The display system libraries no longer need to be built, this library acts as a full replacement.
-- Optional dependencies (eg Wayland, X11) in otherwise static qt build.
-- Could give better errors when a library is missing.
+- Reduce the number of libraries in 'depends'. The display and font system libraries no longer need to be built, this library acts as a full replacement from the perspective of the build system.
+- Optional dependencies (eg Wayland, X11) in otherwise static Qt build. Failing to laod libraries is not necessarily fatal and can instead disable the functionality.
+- Could print more useful errors when a library is missing.
+- Potentially, tighter control over version requirements by restricting which symbols are wrapped, or optional feature support by being toleratnt of missing symbols.
 
 ## Building
 
