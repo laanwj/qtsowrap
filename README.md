@@ -69,5 +69,5 @@ This process should be fully deterministic, so to verify that this worked correc
 
 ## Credits
 
-- This is based on [dynload-wrapper](https://github.com/hpvb/dynload-wrapper) by Hein-Pieter van Braam <hp@tmm.cx> et al, which is also used by Godot.
+- This is based on [dynload-wrapper](https://github.com/hpvb/dynload-wrapper) by Hein-Pieter van Braam <hp@tmm.cx> et al, which is also used by the Godot game engine.
 
