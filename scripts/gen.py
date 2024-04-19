@@ -105,8 +105,9 @@ def main():
         # Also install all the base headers from include/ 
         # These need to preserve the hierarchy, so don't specify them as PUBLIC_HEADER.
         prefix = 'include'
-        for root, dirs, files in os.walk(prefix):
+        for root, dirs, files in sorted(os.walk(prefix)):
             f.write('install(FILES\n')
+            flies = sorted(files) # determinism
             for file in files:
                 filename = os.path.join(root, file)
                 f.write(f'  ../{filename}\n')

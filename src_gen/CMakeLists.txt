@@ -63,30 +63,10 @@ install(FILES
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/.
 )
 install(FILES
-  ../include/xcb/xc_misc.h
-  ../include/xcb/xfixes.h
-  ../include/xcb/render.h
-  ../include/xcb/xcbext.h
-  ../include/xcb/xcb_bitops.h
-  ../include/xcb/dri3.h
-  ../include/xcb/bigreq.h
-  ../include/xcb/shape.h
-  ../include/xcb/randr.h
-  ../include/xcb/xcb.h
-  ../include/xcb/sync.h
-  ../include/xcb/xcb_pixel.h
-  ../include/xcb/dri2.h
-  ../include/xcb/xcb_icccm.h
-  ../include/xcb/xproto.h
-  ../include/xcb/xcb_keysyms.h
-  ../include/xcb/xinerama.h
-  ../include/xcb/xcb_image.h
-  ../include/xcb/present.h
-  ../include/xcb/glx.h
-  ../include/xcb/xcb_renderutil.h
-  ../include/xcb/xkb.h
-  ../include/xcb/shm.h
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xcb
+  ../include/fontconfig/fcprivate.h
+  ../include/fontconfig/fcfreetype.h
+  ../include/fontconfig/fontconfig.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fontconfig
 )
 install(FILES
   ../include/freetype/ftoutln.h
@@ -149,10 +129,30 @@ install(FILES
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype/config
 )
 install(FILES
-  ../include/fontconfig/fcprivate.h
-  ../include/fontconfig/fcfreetype.h
-  ../include/fontconfig/fontconfig.h
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fontconfig
+  ../include/xcb/xc_misc.h
+  ../include/xcb/xfixes.h
+  ../include/xcb/render.h
+  ../include/xcb/xcbext.h
+  ../include/xcb/xcb_bitops.h
+  ../include/xcb/dri3.h
+  ../include/xcb/bigreq.h
+  ../include/xcb/shape.h
+  ../include/xcb/randr.h
+  ../include/xcb/xcb.h
+  ../include/xcb/sync.h
+  ../include/xcb/xcb_pixel.h
+  ../include/xcb/dri2.h
+  ../include/xcb/xcb_icccm.h
+  ../include/xcb/xproto.h
+  ../include/xcb/xcb_keysyms.h
+  ../include/xcb/xinerama.h
+  ../include/xcb/xcb_image.h
+  ../include/xcb/present.h
+  ../include/xcb/glx.h
+  ../include/xcb/xcb_renderutil.h
+  ../include/xcb/xkb.h
+  ../include/xcb/shm.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xcb
 )
 install(FILES
   ../include/xkbcommon/xkbcommon-names.h
