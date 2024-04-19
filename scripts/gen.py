@@ -22,10 +22,9 @@ ALL_LIBS = [
 ('xcb_xfixes',      'libxcb-xfixes.so.0',          ['xcb/xfixes.h'],             ['xcb', 'xcb_render', 'xcb_shape']),
 ('xcb_xinerama',    'libxcb-xinerama.so.0',        ['xcb/xinerama.h'],           ['xcb']),
 ('xcb_xkb',         'libxcb-xkb.so.1',             ['xcb/xkb.h'],                ['xcb']),
-#('xcb_xinput',      'libxcb-xinput.so.0',          ['xcb/xinput.h',              []),
 
-('xkbcommon',       'libxkbcommon.so.0',           ['xkbcommon/xkbcommon.h'],              []),
-('xkbcommon_x11',   'libxkbcommon-x11.so.0',       ['xkbcommon/xkbcommon-x11.h'],          ['xcb', 'xkbcommon']),
+('xkbcommon',       'libxkbcommon.so.0',           ['xkbcommon/xkbcommon.h'],    []),
+('xkbcommon_x11',   'libxkbcommon-x11.so.0',       ['xkbcommon/xkbcommon-x11.h'],['xcb', 'xkbcommon']),
 
 ('freetype',        'libfreetype.so.6',            [
     'ft2build.h',

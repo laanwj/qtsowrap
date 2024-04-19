@@ -14,13 +14,24 @@ For now it handles the boilerplate for:
 ## why
 
 - Reduce the number of libraries in 'depends'. The display and font system libraries no longer need to be built, this library acts as a full replacement from the perspective of the build system.
-- Optional dependencies (eg Wayland, X11) in otherwise static Qt build. Failing to laod libraries is not necessarily fatal and can instead disable the functionality.
+- Optional dependencies (eg Wayland, X11) in otherwise static Qt build. Unlike when directly linking, failing to load libraries is not necessarily fatal and can instead disable the functionality.
 - Could print more useful errors when a library is missing.
-- Potentially, tighter control over version requirements by restricting which symbols are wrapped, or optional feature support by being toleratnt of missing symbols.
+- Tighter control over version requirements by restricting which symbols are wrapped.
+- Optional feature support by being tolerant of missing symbols.
+
+Not all of these are currently implemented.
 
 ## Building
 
 A CMake build system is used to build the stub library.
+
+```sh
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/.../my/staging/dir
+make
+make install
+```
 
 ## Usage
 
@@ -40,7 +51,7 @@ int main()
 }
 ```
 
-Once a library is bound, it's bound for the lifetime of the process. There is no need to call a `deinitialize`. Calling `initialize` multiple times does not make a difference, the dynamic linker will notice that it already loaded the library and re-use that.
+Once a library is bound, it's bound for the lifetime of the process. There is no need to call a `deinitialize`. Calling `initialize` multiple times does not make a difference, the dynamic linker will notice that it already loaded the library and re-use it.
 
 ## Patching Qt
 
