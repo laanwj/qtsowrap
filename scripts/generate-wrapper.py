@@ -30,7 +30,7 @@ from datetime import datetime
 
 try:
     from pycparser import c_parser, c_ast, parse_file, c_generator
-    from pycparser.c_ast import Decl, FuncDecl, PtrDecl
+    from pycparser.c_ast import Decl, FuncDecl, PtrDecl, TypeDecl
 except:
     print("pycparser not found.")
     print("Try installing it with pip install pycparser or using your distributions package manager.")
@@ -80,7 +80,7 @@ def parse_headers(filenames, omit_prefix, initname, ignore_headers = [], ignore_
 
     for ext in ast.ext:
         if isinstance(ext, Decl):
-            if not isinstance(ext.type, FuncDecl):
+            if not isinstance(ext.type, FuncDecl) and not isinstance(ext.type, TypeDecl):
                 continue
 
             skip = False
@@ -106,11 +106,12 @@ def parse_headers(filenames, omit_prefix, initname, ignore_headers = [], ignore_
             if skip:
                 continue
 
-            functions.append(ext.name)
+            functions.append((ext.name, isinstance(ext.type, TypeDecl)))
 
-            for param in ext.type.args:
-                # Parameter anonymization.
-                replace_name(param, get_name(param), "")
+            if isinstance(ext.type, FuncDecl):
+                for param in ext.type.args:
+                    # Parameter anonymization.
+                    replace_name(param, get_name(param), "")
 
             ptr = PtrDecl([], ext.type)
             ext.type = ptr
@@ -134,7 +135,7 @@ def generate_header(sysincludes, functions, initname):
     retval.append("*/")
     retval.append("#include <stdint.h>\n")
 
-    for function in functions:
+    for function, _ in functions:
         retval.append(f"#define {function} {function}_dylibloader_orig_{initname}")
 
     for include in sysincludes:
@@ -143,7 +144,7 @@ def generate_header(sysincludes, functions, initname):
         else:
             retval.append(f"#include \"{include}\"")
 
-    for function in functions:
+    for function, _ in functions:
         retval.append(f"#undef {function}")
 
     retval.append("")
@@ -170,7 +171,7 @@ def write_implementation(filename, soname, sysincludes, initname, functions, sym
         file.write("  }\n")
         file.write("  dlerror();\n")
 
-        for function in functions:
+        for function, _ in functions:
             file.write(f"/* {function} */\n")
             file.write(f"  *(void **) (&{function}_dylibloader_wrapper_{initname}) = dlsym(handle, \"{function}\");\n")
             file.write("  if (verbose) {\n")
@@ -193,8 +194,12 @@ def write_header(filename, sysincludes, initname, functions, sym_definitions):
         file.write("extern \"C\" {\n")
         file.write("#endif\n")
 
-        for function in functions:
-            file.write(f"#define {function} {function}_dylibloader_wrapper_{initname}\n")
+        for function, is_var in functions:
+            if is_var:
+                # Need to dereference variables.
+                file.write(f"#define {function} (*{function}_dylibloader_wrapper_{initname})\n")
+            else:
+                file.write(f"#define {function} {function}_dylibloader_wrapper_{initname}\n")
 
         for sym_definition in sym_definitions:
             file.write(f"extern {sym_definition};\n")
