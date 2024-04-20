@@ -71,6 +71,21 @@ python3 scripts/gen.py
 
 This process should be fully deterministic, so to verify that this worked correctly is a matter of re-running the script.
 
+### Versions
+
+The following header versions are, as currently, in `include/` (same as depends on bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`):
+
+- fontconfig 2.12.6
+- freetype 2.11.0
+- libxcb 1.14
+- libxcb_util_image 0.4.0
+- libxcb_util_keysyms 0.4.0
+- libxcb_util 0.4.0
+- libxcb_util_render 0.3.9
+- libxcb_util_wm 0.4.1
+- xcb_proto 1.15.2
+- xkbcommon 0.8.4
+
 ## Credits
 
 - This is based on [dynload-wrapper](https://github.com/hpvb/dynload-wrapper) by Hein-Pieter van Braam <hp@tmm.cx> et al, which is also used by the Godot game engine. This project made the following changes:
