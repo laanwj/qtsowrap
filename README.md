@@ -15,9 +15,10 @@ For now it handles the boilerplate for:
 
 - Reduce the number of libraries in 'depends'. The display and font system libraries no longer need to be built, this library acts as a full replacement from the perspective of the build system.
 - Optional dependencies (eg Wayland, X11) in otherwise static Qt build. Unlike when directly linking, failing to load libraries is not necessarily fatal and can instead disable the functionality.
+  - Qt's `xcb_xinput` could be handled in this way. It's a library that's only present for newer xcb versions, and is used to support XInput2, which is optional (that said, it's likely not needed for us at all). Currently Qt hacks around this by building an internal version of this lib.
 - Could print more useful errors when a library is missing.
 - Tighter control over version requirements by restricting which symbols are wrapped.
-- Optional feature support by being tolerant of missing symbols.
+- Optional feature support by being tolerant of (some) missing symbols.
 
 Not all of these are currently implemented.
 

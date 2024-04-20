@@ -7,8 +7,11 @@ import os
 import subprocess
 
 GEN='scripts/generate-wrapper.py'
+# important: these are grouped by what symbols are defined in what shared library.
+# so e.g.: the symbols from xproto.h are defined in libxcb.so.1, so it's grouped under there.
 ALL_LIBS = [
 # shortname         # soname                       # includes to scan            # shortnames of inter-dependencies
+#################################################################################################################################
 
 # the reason we're including xcbext.h here is because Qt builds a special version of xcb-xinput internally,
 # an optional dependency to handle XInput2, that's often missing on user's systems. AFAIK this is only used for tablet support,
@@ -48,6 +51,7 @@ ALL_LIBS = [
 
 ('fontconfig',      'libfontconfig.so.1',          ['fontconfig/fontconfig.h', 'fontconfig/fcfreetype.h'],  ['freetype']),
 ]
+
 INC_DIR = 'include'
 OUT_DIR_H = 'include_gen'
 OUT_DIR_C = 'src_gen'
