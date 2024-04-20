@@ -1,5 +1,7 @@
 # qtsowrap
 
+![Basic diagram](.images/qtsowrap.png)
+
 This is a library that wraps Qt's Linux system integration dependencies in a way so that they are loaded at run time, and thus unneeded during the compile process. The aim is to wrap Qt's entire interface with the operating system.
 
 The source is entirely auto-generated from upstream headers. [scripts/gen.py](scripts/gen.py) contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
