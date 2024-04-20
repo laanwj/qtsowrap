@@ -2,7 +2,7 @@
 
 This is a library that wraps Qt's Linux system integration dependencies in a way so that they are loaded at run time, and thus unneeded during the compile process. The aim is to wrap Qt's entire interface with the operating system.
 
-The source is entirely auto-generated from upstream headers. (scripts/gen.py)[scripts/gen.py] contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
+The source is entirely auto-generated from upstream headers. [scripts/gen.py](scripts/gen.py) contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
 
 For now it handles the boilerplate for:
 
@@ -13,12 +13,13 @@ For now it handles the boilerplate for:
 
 ## why
 
-- Reduce the number of libraries in 'depends'. The display and font system libraries no longer need to be built, this library acts as a full replacement from the perspective of the build system.
+- Reduce the number of libraries in 'depends' (faster builds). The display and font system libraries no longer need to be built, this library acts as a full replacement from the perspective of the build system.
 - Optional dependencies (eg Wayland, X11) in otherwise static Qt build. Unlike when directly linking, failing to load libraries is not necessarily fatal and can instead disable the functionality.
   - Qt's `xcb_xinput` could be handled in this way. It's a library that's only present for newer xcb versions, and is used to support XInput2, which is optional (that said, it's likely not needed for us at all). Currently Qt hacks around this by building an internal version of this lib.
 - Could print more useful errors when a library is missing.
 - Tighter control over version requirements by restricting which symbols are wrapped.
 - Optional feature support by being tolerant of (some) missing symbols.
+- Could potentially do some checks before loading the library (and its dependencies), or log hashes for troubleshooting.
 
 Not all of these are currently implemented.
 
@@ -70,5 +71,7 @@ This process should be fully deterministic, so to verify that this worked correc
 
 ## Credits
 
-- This is based on [dynload-wrapper](https://github.com/hpvb/dynload-wrapper) by Hein-Pieter van Braam <hp@tmm.cx> et al, which is also used by the Godot game engine.
+- This is based on [dynload-wrapper](https://github.com/hpvb/dynload-wrapper) by Hein-Pieter van Braam <hp@tmm.cx> et al, which is also used by the Godot game engine. This project made the following changes:
 
+  - Parse multiple includes consecutively instead of one at a time: this allows for implicit dependencies between headers, e.g. headers that assume some other header to already have been included by the referencing code.
+  - Handle exported variables. This is necessary for xcb's `xcb_randr_id` and such.
