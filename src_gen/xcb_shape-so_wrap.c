@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_shape_id xcb_shape_id_dylibloader_orig_xcb_shape
 #define xcb_shape_op_next xcb_shape_op_next_dylibloader_orig_xcb_shape
 #define xcb_shape_op_end xcb_shape_op_end_dylibloader_orig_xcb_shape
 #define xcb_shape_kind_next xcb_shape_kind_next_dylibloader_orig_xcb_shape
@@ -41,6 +42,7 @@
 #define xcb_shape_get_rectangles_reply xcb_shape_get_rectangles_reply_dylibloader_orig_xcb_shape
 #include "xcb-so_wrap.h"
 #include <xcb/shape.h>
+#undef xcb_shape_id
 #undef xcb_shape_op_next
 #undef xcb_shape_op_end
 #undef xcb_shape_kind_next
@@ -77,6 +79,7 @@
 #undef xcb_shape_get_rectangles_reply
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_shape_id_dylibloader_wrapper_xcb_shape;
 void (*xcb_shape_op_next_dylibloader_wrapper_xcb_shape)(xcb_shape_op_iterator_t *);
 xcb_generic_iterator_t (*xcb_shape_op_end_dylibloader_wrapper_xcb_shape)(xcb_shape_op_iterator_t);
 void (*xcb_shape_kind_next_dylibloader_wrapper_xcb_shape)(xcb_shape_kind_iterator_t *);
@@ -122,6 +125,15 @@ int initialize_xcb_shape(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_shape_id */
+  *(void **) (&xcb_shape_id_dylibloader_wrapper_xcb_shape) = dlsym(handle, "xcb_shape_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_shape_op_next */
   *(void **) (&xcb_shape_op_next_dylibloader_wrapper_xcb_shape) = dlsym(handle, "xcb_shape_op_next");
   if (verbose) {

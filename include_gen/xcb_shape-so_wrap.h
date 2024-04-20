@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_shape_id xcb_shape_id_dylibloader_orig_xcb_shape
 #define xcb_shape_op_next xcb_shape_op_next_dylibloader_orig_xcb_shape
 #define xcb_shape_op_end xcb_shape_op_end_dylibloader_orig_xcb_shape
 #define xcb_shape_kind_next xcb_shape_kind_next_dylibloader_orig_xcb_shape
@@ -43,6 +44,7 @@
 #define xcb_shape_get_rectangles_reply xcb_shape_get_rectangles_reply_dylibloader_orig_xcb_shape
 #include "xcb-so_wrap.h"
 #include <xcb/shape.h>
+#undef xcb_shape_id
 #undef xcb_shape_op_next
 #undef xcb_shape_op_end
 #undef xcb_shape_kind_next
@@ -80,6 +82,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_shape_id (*xcb_shape_id_dylibloader_wrapper_xcb_shape)
 #define xcb_shape_op_next xcb_shape_op_next_dylibloader_wrapper_xcb_shape
 #define xcb_shape_op_end xcb_shape_op_end_dylibloader_wrapper_xcb_shape
 #define xcb_shape_kind_next xcb_shape_kind_next_dylibloader_wrapper_xcb_shape
@@ -114,6 +117,7 @@ extern "C" {
 #define xcb_shape_get_rectangles_rectangles_length xcb_shape_get_rectangles_rectangles_length_dylibloader_wrapper_xcb_shape
 #define xcb_shape_get_rectangles_rectangles_iterator xcb_shape_get_rectangles_rectangles_iterator_dylibloader_wrapper_xcb_shape
 #define xcb_shape_get_rectangles_reply xcb_shape_get_rectangles_reply_dylibloader_wrapper_xcb_shape
+extern xcb_extension_t *xcb_shape_id_dylibloader_wrapper_xcb_shape;
 extern void (*xcb_shape_op_next_dylibloader_wrapper_xcb_shape)(xcb_shape_op_iterator_t *);
 extern xcb_generic_iterator_t (*xcb_shape_op_end_dylibloader_wrapper_xcb_shape)(xcb_shape_op_iterator_t);
 extern void (*xcb_shape_kind_next_dylibloader_wrapper_xcb_shape)(xcb_shape_kind_iterator_t *);

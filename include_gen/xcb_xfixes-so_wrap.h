@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_xfixes_id xcb_xfixes_id_dylibloader_orig_xcb_xfixes
 #define xcb_xfixes_query_version xcb_xfixes_query_version_dylibloader_orig_xcb_xfixes
 #define xcb_xfixes_query_version_unchecked xcb_xfixes_query_version_unchecked_dylibloader_orig_xcb_xfixes
 #define xcb_xfixes_query_version_reply xcb_xfixes_query_version_reply_dylibloader_orig_xcb_xfixes
@@ -130,6 +131,7 @@
 #include "xcb_render-so_wrap.h"
 #include "xcb_shape-so_wrap.h"
 #include <xcb/xfixes.h>
+#undef xcb_xfixes_id
 #undef xcb_xfixes_query_version
 #undef xcb_xfixes_query_version_unchecked
 #undef xcb_xfixes_query_version_reply
@@ -252,6 +254,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_xfixes_id (*xcb_xfixes_id_dylibloader_wrapper_xcb_xfixes)
 #define xcb_xfixes_query_version xcb_xfixes_query_version_dylibloader_wrapper_xcb_xfixes
 #define xcb_xfixes_query_version_unchecked xcb_xfixes_query_version_unchecked_dylibloader_wrapper_xcb_xfixes
 #define xcb_xfixes_query_version_reply xcb_xfixes_query_version_reply_dylibloader_wrapper_xcb_xfixes
@@ -371,6 +374,7 @@ extern "C" {
 #define xcb_xfixes_get_client_disconnect_mode xcb_xfixes_get_client_disconnect_mode_dylibloader_wrapper_xcb_xfixes
 #define xcb_xfixes_get_client_disconnect_mode_unchecked xcb_xfixes_get_client_disconnect_mode_unchecked_dylibloader_wrapper_xcb_xfixes
 #define xcb_xfixes_get_client_disconnect_mode_reply xcb_xfixes_get_client_disconnect_mode_reply_dylibloader_wrapper_xcb_xfixes
+extern xcb_extension_t *xcb_xfixes_id_dylibloader_wrapper_xcb_xfixes;
 extern xcb_xfixes_query_version_cookie_t (*xcb_xfixes_query_version_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, uint32_t, uint32_t);
 extern xcb_xfixes_query_version_cookie_t (*xcb_xfixes_query_version_unchecked_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, uint32_t, uint32_t);
 extern xcb_xfixes_query_version_reply_t *(*xcb_xfixes_query_version_reply_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, xcb_xfixes_query_version_cookie_t, xcb_generic_error_t **);

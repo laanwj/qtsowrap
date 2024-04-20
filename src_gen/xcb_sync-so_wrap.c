@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_sync_id xcb_sync_id_dylibloader_orig_xcb_sync
 #define xcb_sync_alarm_next xcb_sync_alarm_next_dylibloader_orig_xcb_sync
 #define xcb_sync_alarm_end xcb_sync_alarm_end_dylibloader_orig_xcb_sync
 #define xcb_sync_counter_next xcb_sync_counter_next_dylibloader_orig_xcb_sync
@@ -96,6 +97,7 @@
 #define xcb_sync_await_fence_fence_list_end xcb_sync_await_fence_fence_list_end_dylibloader_orig_xcb_sync
 #include "xcb-so_wrap.h"
 #include <xcb/sync.h>
+#undef xcb_sync_id
 #undef xcb_sync_alarm_next
 #undef xcb_sync_alarm_end
 #undef xcb_sync_counter_next
@@ -187,6 +189,7 @@
 #undef xcb_sync_await_fence_fence_list_end
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_sync_id_dylibloader_wrapper_xcb_sync;
 void (*xcb_sync_alarm_next_dylibloader_wrapper_xcb_sync)(xcb_sync_alarm_iterator_t *);
 xcb_generic_iterator_t (*xcb_sync_alarm_end_dylibloader_wrapper_xcb_sync)(xcb_sync_alarm_iterator_t);
 void (*xcb_sync_counter_next_dylibloader_wrapper_xcb_sync)(xcb_sync_counter_iterator_t *);
@@ -287,6 +290,15 @@ int initialize_xcb_sync(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_sync_id */
+  *(void **) (&xcb_sync_id_dylibloader_wrapper_xcb_sync) = dlsym(handle, "xcb_sync_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_sync_alarm_next */
   *(void **) (&xcb_sync_alarm_next_dylibloader_wrapper_xcb_sync) = dlsym(handle, "xcb_sync_alarm_next");
   if (verbose) {

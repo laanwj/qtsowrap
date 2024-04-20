@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_shm_id xcb_shm_id_dylibloader_orig_xcb_shm
 #define xcb_shm_seg_next xcb_shm_seg_next_dylibloader_orig_xcb_shm
 #define xcb_shm_seg_end xcb_shm_seg_end_dylibloader_orig_xcb_shm
 #define xcb_shm_query_version xcb_shm_query_version_dylibloader_orig_xcb_shm
@@ -31,6 +32,7 @@
 #define xcb_shm_create_segment_reply_fds xcb_shm_create_segment_reply_fds_dylibloader_orig_xcb_shm
 #include "xcb-so_wrap.h"
 #include <xcb/shm.h>
+#undef xcb_shm_id
 #undef xcb_shm_seg_next
 #undef xcb_shm_seg_end
 #undef xcb_shm_query_version
@@ -56,6 +58,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_shm_id (*xcb_shm_id_dylibloader_wrapper_xcb_shm)
 #define xcb_shm_seg_next xcb_shm_seg_next_dylibloader_wrapper_xcb_shm
 #define xcb_shm_seg_end xcb_shm_seg_end_dylibloader_wrapper_xcb_shm
 #define xcb_shm_query_version xcb_shm_query_version_dylibloader_wrapper_xcb_shm
@@ -78,6 +81,7 @@ extern "C" {
 #define xcb_shm_create_segment_unchecked xcb_shm_create_segment_unchecked_dylibloader_wrapper_xcb_shm
 #define xcb_shm_create_segment_reply xcb_shm_create_segment_reply_dylibloader_wrapper_xcb_shm
 #define xcb_shm_create_segment_reply_fds xcb_shm_create_segment_reply_fds_dylibloader_wrapper_xcb_shm
+extern xcb_extension_t *xcb_shm_id_dylibloader_wrapper_xcb_shm;
 extern void (*xcb_shm_seg_next_dylibloader_wrapper_xcb_shm)(xcb_shm_seg_iterator_t *);
 extern xcb_generic_iterator_t (*xcb_shm_seg_end_dylibloader_wrapper_xcb_shm)(xcb_shm_seg_iterator_t);
 extern xcb_shm_query_version_cookie_t (*xcb_shm_query_version_dylibloader_wrapper_xcb_shm)(xcb_connection_t *);

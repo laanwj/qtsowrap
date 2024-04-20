@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_render_id xcb_render_id_dylibloader_orig_xcb_render
 #define xcb_render_glyph_next xcb_render_glyph_next_dylibloader_orig_xcb_render
 #define xcb_render_glyph_end xcb_render_glyph_end_dylibloader_orig_xcb_render
 #define xcb_render_glyphset_next xcb_render_glyphset_next_dylibloader_orig_xcb_render
@@ -243,6 +244,7 @@
 #define xcb_render_create_conical_gradient_colors_iterator xcb_render_create_conical_gradient_colors_iterator_dylibloader_orig_xcb_render
 #include "xcb-so_wrap.h"
 #include <xcb/render.h>
+#undef xcb_render_id
 #undef xcb_render_glyph_next
 #undef xcb_render_glyph_end
 #undef xcb_render_glyphset_next
@@ -480,6 +482,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_render_id (*xcb_render_id_dylibloader_wrapper_xcb_render)
 #define xcb_render_glyph_next xcb_render_glyph_next_dylibloader_wrapper_xcb_render
 #define xcb_render_glyph_end xcb_render_glyph_end_dylibloader_wrapper_xcb_render
 #define xcb_render_glyphset_next xcb_render_glyphset_next_dylibloader_wrapper_xcb_render
@@ -714,6 +717,7 @@ extern "C" {
 #define xcb_render_create_conical_gradient_colors xcb_render_create_conical_gradient_colors_dylibloader_wrapper_xcb_render
 #define xcb_render_create_conical_gradient_colors_length xcb_render_create_conical_gradient_colors_length_dylibloader_wrapper_xcb_render
 #define xcb_render_create_conical_gradient_colors_iterator xcb_render_create_conical_gradient_colors_iterator_dylibloader_wrapper_xcb_render
+extern xcb_extension_t *xcb_render_id_dylibloader_wrapper_xcb_render;
 extern void (*xcb_render_glyph_next_dylibloader_wrapper_xcb_render)(xcb_render_glyph_iterator_t *);
 extern xcb_generic_iterator_t (*xcb_render_glyph_end_dylibloader_wrapper_xcb_render)(xcb_render_glyph_iterator_t);
 extern void (*xcb_render_glyphset_next_dylibloader_wrapper_xcb_render)(xcb_render_glyphset_iterator_t *);

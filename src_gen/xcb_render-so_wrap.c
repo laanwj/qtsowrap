@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_render_id xcb_render_id_dylibloader_orig_xcb_render
 #define xcb_render_glyph_next xcb_render_glyph_next_dylibloader_orig_xcb_render
 #define xcb_render_glyph_end xcb_render_glyph_end_dylibloader_orig_xcb_render
 #define xcb_render_glyphset_next xcb_render_glyphset_next_dylibloader_orig_xcb_render
@@ -241,6 +242,7 @@
 #define xcb_render_create_conical_gradient_colors_iterator xcb_render_create_conical_gradient_colors_iterator_dylibloader_orig_xcb_render
 #include "xcb-so_wrap.h"
 #include <xcb/render.h>
+#undef xcb_render_id
 #undef xcb_render_glyph_next
 #undef xcb_render_glyph_end
 #undef xcb_render_glyphset_next
@@ -477,6 +479,7 @@
 #undef xcb_render_create_conical_gradient_colors_iterator
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_render_id_dylibloader_wrapper_xcb_render;
 void (*xcb_render_glyph_next_dylibloader_wrapper_xcb_render)(xcb_render_glyph_iterator_t *);
 xcb_generic_iterator_t (*xcb_render_glyph_end_dylibloader_wrapper_xcb_render)(xcb_render_glyph_iterator_t);
 void (*xcb_render_glyphset_next_dylibloader_wrapper_xcb_render)(xcb_render_glyphset_iterator_t *);
@@ -722,6 +725,15 @@ int initialize_xcb_render(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_render_id */
+  *(void **) (&xcb_render_id_dylibloader_wrapper_xcb_render) = dlsym(handle, "xcb_render_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_render_glyph_next */
   *(void **) (&xcb_render_glyph_next_dylibloader_wrapper_xcb_render) = dlsym(handle, "xcb_render_glyph_next");
   if (verbose) {

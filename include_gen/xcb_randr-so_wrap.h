@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_randr_id xcb_randr_id_dylibloader_orig_xcb_randr
 #define xcb_randr_mode_next xcb_randr_mode_next_dylibloader_orig_xcb_randr
 #define xcb_randr_mode_end xcb_randr_mode_end_dylibloader_orig_xcb_randr
 #define xcb_randr_crtc_next xcb_randr_crtc_next_dylibloader_orig_xcb_randr
@@ -329,6 +330,7 @@
 #include "xcb-so_wrap.h"
 #include "xcb_render-so_wrap.h"
 #include <xcb/randr.h>
+#undef xcb_randr_id
 #undef xcb_randr_mode_next
 #undef xcb_randr_mode_end
 #undef xcb_randr_crtc_next
@@ -651,6 +653,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_randr_id (*xcb_randr_id_dylibloader_wrapper_xcb_randr)
 #define xcb_randr_mode_next xcb_randr_mode_next_dylibloader_wrapper_xcb_randr
 #define xcb_randr_mode_end xcb_randr_mode_end_dylibloader_wrapper_xcb_randr
 #define xcb_randr_crtc_next xcb_randr_crtc_next_dylibloader_wrapper_xcb_randr
@@ -970,6 +973,7 @@ extern "C" {
 #define xcb_randr_lease_notify_end xcb_randr_lease_notify_end_dylibloader_wrapper_xcb_randr
 #define xcb_randr_notify_data_next xcb_randr_notify_data_next_dylibloader_wrapper_xcb_randr
 #define xcb_randr_notify_data_end xcb_randr_notify_data_end_dylibloader_wrapper_xcb_randr
+extern xcb_extension_t *xcb_randr_id_dylibloader_wrapper_xcb_randr;
 extern void (*xcb_randr_mode_next_dylibloader_wrapper_xcb_randr)(xcb_randr_mode_iterator_t *);
 extern xcb_generic_iterator_t (*xcb_randr_mode_end_dylibloader_wrapper_xcb_randr)(xcb_randr_mode_iterator_t);
 extern void (*xcb_randr_crtc_next_dylibloader_wrapper_xcb_randr)(xcb_randr_crtc_iterator_t *);

@@ -7,6 +7,7 @@
 */
 #include <stdint.h>
 
+#define xcb_sync_id xcb_sync_id_dylibloader_orig_xcb_sync
 #define xcb_sync_alarm_next xcb_sync_alarm_next_dylibloader_orig_xcb_sync
 #define xcb_sync_alarm_end xcb_sync_alarm_end_dylibloader_orig_xcb_sync
 #define xcb_sync_counter_next xcb_sync_counter_next_dylibloader_orig_xcb_sync
@@ -98,6 +99,7 @@
 #define xcb_sync_await_fence_fence_list_end xcb_sync_await_fence_fence_list_end_dylibloader_orig_xcb_sync
 #include "xcb-so_wrap.h"
 #include <xcb/sync.h>
+#undef xcb_sync_id
 #undef xcb_sync_alarm_next
 #undef xcb_sync_alarm_end
 #undef xcb_sync_counter_next
@@ -190,6 +192,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define xcb_sync_id (*xcb_sync_id_dylibloader_wrapper_xcb_sync)
 #define xcb_sync_alarm_next xcb_sync_alarm_next_dylibloader_wrapper_xcb_sync
 #define xcb_sync_alarm_end xcb_sync_alarm_end_dylibloader_wrapper_xcb_sync
 #define xcb_sync_counter_next xcb_sync_counter_next_dylibloader_wrapper_xcb_sync
@@ -279,6 +282,7 @@ extern "C" {
 #define xcb_sync_await_fence_fence_list xcb_sync_await_fence_fence_list_dylibloader_wrapper_xcb_sync
 #define xcb_sync_await_fence_fence_list_length xcb_sync_await_fence_fence_list_length_dylibloader_wrapper_xcb_sync
 #define xcb_sync_await_fence_fence_list_end xcb_sync_await_fence_fence_list_end_dylibloader_wrapper_xcb_sync
+extern xcb_extension_t *xcb_sync_id_dylibloader_wrapper_xcb_sync;
 extern void (*xcb_sync_alarm_next_dylibloader_wrapper_xcb_sync)(xcb_sync_alarm_iterator_t *);
 extern xcb_generic_iterator_t (*xcb_sync_alarm_end_dylibloader_wrapper_xcb_sync)(xcb_sync_alarm_iterator_t);
 extern void (*xcb_sync_counter_next_dylibloader_wrapper_xcb_sync)(xcb_sync_counter_iterator_t *);

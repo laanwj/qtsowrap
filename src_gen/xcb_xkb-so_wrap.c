@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_xkb_id xcb_xkb_id_dylibloader_orig_xcb_xkb
 #define xcb_xkb_get_kbd_by_name_replies_types_map xcb_xkb_get_kbd_by_name_replies_types_map_dylibloader_orig_xcb_xkb
 #define xcb_xkb_device_spec_next xcb_xkb_device_spec_next_dylibloader_orig_xcb_xkb
 #define xcb_xkb_device_spec_end xcb_xkb_device_spec_end_dylibloader_orig_xcb_xkb
@@ -506,6 +507,7 @@
 #define xcb_xkb_set_debugging_flags_reply xcb_xkb_set_debugging_flags_reply_dylibloader_orig_xcb_xkb
 #include "xcb-so_wrap.h"
 #include <xcb/xkb.h>
+#undef xcb_xkb_id
 #undef xcb_xkb_get_kbd_by_name_replies_types_map
 #undef xcb_xkb_device_spec_next
 #undef xcb_xkb_device_spec_end
@@ -1007,6 +1009,7 @@
 #undef xcb_xkb_set_debugging_flags_reply
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_xkb_id_dylibloader_wrapper_xcb_xkb;
 xcb_xkb_get_kbd_by_name_replies_types_map_t *(*xcb_xkb_get_kbd_by_name_replies_types_map_dylibloader_wrapper_xcb_xkb)(const xcb_xkb_get_kbd_by_name_replies_t *);
 void (*xcb_xkb_device_spec_next_dylibloader_wrapper_xcb_xkb)(xcb_xkb_device_spec_iterator_t *);
 xcb_generic_iterator_t (*xcb_xkb_device_spec_end_dylibloader_wrapper_xcb_xkb)(xcb_xkb_device_spec_iterator_t);
@@ -1517,6 +1520,15 @@ int initialize_xcb_xkb(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_xkb_id */
+  *(void **) (&xcb_xkb_id_dylibloader_wrapper_xcb_xkb) = dlsym(handle, "xcb_xkb_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_xkb_get_kbd_by_name_replies_types_map */
   *(void **) (&xcb_xkb_get_kbd_by_name_replies_types_map_dylibloader_wrapper_xcb_xkb) = dlsym(handle, "xcb_xkb_get_kbd_by_name_replies_types_map");
   if (verbose) {

@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_xinerama_id xcb_xinerama_id_dylibloader_orig_xcb_xinerama
 #define xcb_xinerama_screen_info_next xcb_xinerama_screen_info_next_dylibloader_orig_xcb_xinerama
 #define xcb_xinerama_screen_info_end xcb_xinerama_screen_info_end_dylibloader_orig_xcb_xinerama
 #define xcb_xinerama_query_version xcb_xinerama_query_version_dylibloader_orig_xcb_xinerama
@@ -31,6 +32,7 @@
 #define xcb_xinerama_query_screens_reply xcb_xinerama_query_screens_reply_dylibloader_orig_xcb_xinerama
 #include "xcb-so_wrap.h"
 #include <xcb/xinerama.h>
+#undef xcb_xinerama_id
 #undef xcb_xinerama_screen_info_next
 #undef xcb_xinerama_screen_info_end
 #undef xcb_xinerama_query_version
@@ -57,6 +59,7 @@
 #undef xcb_xinerama_query_screens_reply
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_xinerama_id_dylibloader_wrapper_xcb_xinerama;
 void (*xcb_xinerama_screen_info_next_dylibloader_wrapper_xcb_xinerama)(xcb_xinerama_screen_info_iterator_t *);
 xcb_generic_iterator_t (*xcb_xinerama_screen_info_end_dylibloader_wrapper_xcb_xinerama)(xcb_xinerama_screen_info_iterator_t);
 xcb_xinerama_query_version_cookie_t (*xcb_xinerama_query_version_dylibloader_wrapper_xcb_xinerama)(xcb_connection_t *, uint8_t, uint8_t);
@@ -92,6 +95,15 @@ int initialize_xcb_xinerama(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_xinerama_id */
+  *(void **) (&xcb_xinerama_id_dylibloader_wrapper_xcb_xinerama) = dlsym(handle, "xcb_xinerama_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_xinerama_screen_info_next */
   *(void **) (&xcb_xinerama_screen_info_next_dylibloader_wrapper_xcb_xinerama) = dlsym(handle, "xcb_xinerama_screen_info_next");
   if (verbose) {

@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_randr_id xcb_randr_id_dylibloader_orig_xcb_randr
 #define xcb_randr_mode_next xcb_randr_mode_next_dylibloader_orig_xcb_randr
 #define xcb_randr_mode_end xcb_randr_mode_end_dylibloader_orig_xcb_randr
 #define xcb_randr_crtc_next xcb_randr_crtc_next_dylibloader_orig_xcb_randr
@@ -327,6 +328,7 @@
 #include "xcb-so_wrap.h"
 #include "xcb_render-so_wrap.h"
 #include <xcb/randr.h>
+#undef xcb_randr_id
 #undef xcb_randr_mode_next
 #undef xcb_randr_mode_end
 #undef xcb_randr_crtc_next
@@ -648,6 +650,7 @@
 #undef xcb_randr_notify_data_end
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_randr_id_dylibloader_wrapper_xcb_randr;
 void (*xcb_randr_mode_next_dylibloader_wrapper_xcb_randr)(xcb_randr_mode_iterator_t *);
 xcb_generic_iterator_t (*xcb_randr_mode_end_dylibloader_wrapper_xcb_randr)(xcb_randr_mode_iterator_t);
 void (*xcb_randr_crtc_next_dylibloader_wrapper_xcb_randr)(xcb_randr_crtc_iterator_t *);
@@ -978,6 +981,15 @@ int initialize_xcb_randr(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_randr_id */
+  *(void **) (&xcb_randr_id_dylibloader_wrapper_xcb_randr) = dlsym(handle, "xcb_randr_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_randr_mode_next */
   *(void **) (&xcb_randr_mode_next_dylibloader_wrapper_xcb_randr) = dlsym(handle, "xcb_randr_mode_next");
   if (verbose) {

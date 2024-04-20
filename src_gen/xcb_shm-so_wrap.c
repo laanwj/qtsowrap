@@ -5,6 +5,7 @@
 */
 #include <stdint.h>
 
+#define xcb_shm_id xcb_shm_id_dylibloader_orig_xcb_shm
 #define xcb_shm_seg_next xcb_shm_seg_next_dylibloader_orig_xcb_shm
 #define xcb_shm_seg_end xcb_shm_seg_end_dylibloader_orig_xcb_shm
 #define xcb_shm_query_version xcb_shm_query_version_dylibloader_orig_xcb_shm
@@ -29,6 +30,7 @@
 #define xcb_shm_create_segment_reply_fds xcb_shm_create_segment_reply_fds_dylibloader_orig_xcb_shm
 #include "xcb-so_wrap.h"
 #include <xcb/shm.h>
+#undef xcb_shm_id
 #undef xcb_shm_seg_next
 #undef xcb_shm_seg_end
 #undef xcb_shm_query_version
@@ -53,6 +55,7 @@
 #undef xcb_shm_create_segment_reply_fds
 #include <dlfcn.h>
 #include <stdio.h>
+xcb_extension_t *xcb_shm_id_dylibloader_wrapper_xcb_shm;
 void (*xcb_shm_seg_next_dylibloader_wrapper_xcb_shm)(xcb_shm_seg_iterator_t *);
 xcb_generic_iterator_t (*xcb_shm_seg_end_dylibloader_wrapper_xcb_shm)(xcb_shm_seg_iterator_t);
 xcb_shm_query_version_cookie_t (*xcb_shm_query_version_dylibloader_wrapper_xcb_shm)(xcb_connection_t *);
@@ -86,6 +89,15 @@ int initialize_xcb_shm(int verbose) {
     return(1);
   }
   dlerror();
+/* xcb_shm_id */
+  *(void **) (&xcb_shm_id_dylibloader_wrapper_xcb_shm) = dlsym(handle, "xcb_shm_id");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
 /* xcb_shm_seg_next */
   *(void **) (&xcb_shm_seg_next_dylibloader_wrapper_xcb_shm) = dlsym(handle, "xcb_shm_seg_next");
   if (verbose) {
