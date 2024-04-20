@@ -9,7 +9,11 @@ import subprocess
 GEN='scripts/generate-wrapper.py'
 ALL_LIBS = [
 # shortname         # soname                       # includes to scan            # shortnames of inter-dependencies
-('xcb',             'libxcb.so.1',                 ['xcb/xproto.h', 'xcb/xcb.h'],[]),
+
+# the reason we're including xcbext.h here is because Qt builds a special version of xcb-xinput internally,
+# an optional dependency to handle XInput2, that's often missing on user's systems. AFAIK this is only used for tablet support,
+# so stripping it out would be another option, but that is more incisive into Qt code.
+('xcb',             'libxcb.so.1',                 ['xcb/xproto.h', 'xcb/xcb.h', 'xcb/xcbext.h'],[]),
 ('xcb_icccm',       'libxcb-icccm.so.4',           ['xcb/xcb_icccm.h'],          ['xcb']),
 ('xcb_image',       'libxcb-image.so.0',           ['xcb/xcb_image.h'],          ['xcb', 'xcb_shm']),
 ('xcb_keysyms',     'libxcb-keysyms.so.1',         ['xcb/xcb_keysyms.h'],        ['xcb']),
