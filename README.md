@@ -63,6 +63,10 @@ Qt cannot use this library by default, it needs to be patched.
 
 ## Generation
 
+Generation dependends on `pycparser` for parsing the input headers:
+
+    pip install pycparser
+
 To re-generate the headers and implementation files in `src_gen` and `include_gen` from the headers in `include`:
 
 ```python
