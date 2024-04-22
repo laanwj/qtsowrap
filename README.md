@@ -96,3 +96,5 @@ The following header versions are, as currently, in `include/` (same as depends 
 
   - Parse multiple includes consecutively instead of one at a time: this allows for implicit dependencies between headers, e.g. headers that assume some other header to already have been included by the referencing code.
   - Handle exported variables. This is necessary for xcb's `xcb_randr_id` and such.
+  - Add `--include-dir` flag to provide additional preprocessor include directory.
+  - Remove `xcb` dummy from the `fake_libc_include` (as we actually want to wrap this library!).
