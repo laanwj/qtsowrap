@@ -120,11 +120,6 @@
 #define xcb_xfixes_create_pointer_barrier_devices_end xcb_xfixes_create_pointer_barrier_devices_end_dylibloader_orig_xcb_xfixes
 #define xcb_xfixes_delete_pointer_barrier_checked xcb_xfixes_delete_pointer_barrier_checked_dylibloader_orig_xcb_xfixes
 #define xcb_xfixes_delete_pointer_barrier xcb_xfixes_delete_pointer_barrier_dylibloader_orig_xcb_xfixes
-#define xcb_xfixes_set_client_disconnect_mode_checked xcb_xfixes_set_client_disconnect_mode_checked_dylibloader_orig_xcb_xfixes
-#define xcb_xfixes_set_client_disconnect_mode xcb_xfixes_set_client_disconnect_mode_dylibloader_orig_xcb_xfixes
-#define xcb_xfixes_get_client_disconnect_mode xcb_xfixes_get_client_disconnect_mode_dylibloader_orig_xcb_xfixes
-#define xcb_xfixes_get_client_disconnect_mode_unchecked xcb_xfixes_get_client_disconnect_mode_unchecked_dylibloader_orig_xcb_xfixes
-#define xcb_xfixes_get_client_disconnect_mode_reply xcb_xfixes_get_client_disconnect_mode_reply_dylibloader_orig_xcb_xfixes
 #include "xcb-so_wrap.h"
 #include "xcb_render-so_wrap.h"
 #include "xcb_shape-so_wrap.h"
@@ -244,11 +239,6 @@
 #undef xcb_xfixes_create_pointer_barrier_devices_end
 #undef xcb_xfixes_delete_pointer_barrier_checked
 #undef xcb_xfixes_delete_pointer_barrier
-#undef xcb_xfixes_set_client_disconnect_mode_checked
-#undef xcb_xfixes_set_client_disconnect_mode
-#undef xcb_xfixes_get_client_disconnect_mode
-#undef xcb_xfixes_get_client_disconnect_mode_unchecked
-#undef xcb_xfixes_get_client_disconnect_mode_reply
 #include <dlfcn.h>
 #include <stdio.h>
 xcb_extension_t *xcb_xfixes_id_dylibloader_wrapper_xcb_xfixes;
@@ -366,11 +356,6 @@ int (*xcb_xfixes_create_pointer_barrier_devices_length_dylibloader_wrapper_xcb_x
 xcb_generic_iterator_t (*xcb_xfixes_create_pointer_barrier_devices_end_dylibloader_wrapper_xcb_xfixes)(const xcb_xfixes_create_pointer_barrier_request_t *);
 xcb_void_cookie_t (*xcb_xfixes_delete_pointer_barrier_checked_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, xcb_xfixes_barrier_t);
 xcb_void_cookie_t (*xcb_xfixes_delete_pointer_barrier_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, xcb_xfixes_barrier_t);
-xcb_void_cookie_t (*xcb_xfixes_set_client_disconnect_mode_checked_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, uint32_t);
-xcb_void_cookie_t (*xcb_xfixes_set_client_disconnect_mode_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, uint32_t);
-xcb_xfixes_get_client_disconnect_mode_cookie_t (*xcb_xfixes_get_client_disconnect_mode_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *);
-xcb_xfixes_get_client_disconnect_mode_cookie_t (*xcb_xfixes_get_client_disconnect_mode_unchecked_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *);
-xcb_xfixes_get_client_disconnect_mode_reply_t *(*xcb_xfixes_get_client_disconnect_mode_reply_dylibloader_wrapper_xcb_xfixes)(xcb_connection_t *, xcb_xfixes_get_client_disconnect_mode_cookie_t, xcb_generic_error_t **);
 int initialize_xcb_xfixes(int verbose) {
   void *handle;
   char *error;
@@ -1410,51 +1395,6 @@ int initialize_xcb_xfixes(int verbose) {
   }
 /* xcb_xfixes_delete_pointer_barrier */
   *(void **) (&xcb_xfixes_delete_pointer_barrier_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_delete_pointer_barrier");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xcb_xfixes_set_client_disconnect_mode_checked */
-  *(void **) (&xcb_xfixes_set_client_disconnect_mode_checked_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_set_client_disconnect_mode_checked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xcb_xfixes_set_client_disconnect_mode */
-  *(void **) (&xcb_xfixes_set_client_disconnect_mode_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_set_client_disconnect_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xcb_xfixes_get_client_disconnect_mode */
-  *(void **) (&xcb_xfixes_get_client_disconnect_mode_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_get_client_disconnect_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xcb_xfixes_get_client_disconnect_mode_unchecked */
-  *(void **) (&xcb_xfixes_get_client_disconnect_mode_unchecked_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_get_client_disconnect_mode_unchecked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
-/* xcb_xfixes_get_client_disconnect_mode_reply */
-  *(void **) (&xcb_xfixes_get_client_disconnect_mode_reply_dylibloader_wrapper_xcb_xfixes) = dlsym(handle, "xcb_xfixes_get_client_disconnect_mode_reply");
   if (verbose) {
     error = dlerror();
     if (error != NULL) {
