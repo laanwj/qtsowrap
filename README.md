@@ -77,7 +77,7 @@ This process should be fully deterministic, so to verify that this worked correc
 
 ### Versions
 
-The following header versions are, as currently, in `include/` (same as depends on bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`):
+The following header versions are, as currently, in `include/` - same as depends on bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a` with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted:
 
 - fontconfig 2.12.6
 - freetype 2.11.0
@@ -87,7 +87,7 @@ The following header versions are, as currently, in `include/` (same as depends 
 - libxcb_util 0.4.0
 - libxcb_util_render 0.3.9
 - libxcb_util_wm 0.4.1
-- xcb_proto 1.15.2
+- xcb_proto 1.14.1
 - xkbcommon 0.8.4
 
 ## Credits

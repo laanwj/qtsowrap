@@ -90,9 +90,6 @@ typedef struct xcb_randr_bad_output_error_t {
     uint8_t  response_type;
     uint8_t  error_code;
     uint16_t sequence;
-    uint32_t bad_value;
-    uint16_t minor_opcode;
-    uint8_t  major_opcode;
 } xcb_randr_bad_output_error_t;
 
 /** Opcode for xcb_randr_bad_crtc. */
@@ -105,9 +102,6 @@ typedef struct xcb_randr_bad_crtc_error_t {
     uint8_t  response_type;
     uint8_t  error_code;
     uint16_t sequence;
-    uint32_t bad_value;
-    uint16_t minor_opcode;
-    uint8_t  major_opcode;
 } xcb_randr_bad_crtc_error_t;
 
 /** Opcode for xcb_randr_bad_mode. */
@@ -120,9 +114,6 @@ typedef struct xcb_randr_bad_mode_error_t {
     uint8_t  response_type;
     uint8_t  error_code;
     uint16_t sequence;
-    uint32_t bad_value;
-    uint16_t minor_opcode;
-    uint8_t  major_opcode;
 } xcb_randr_bad_mode_error_t;
 
 /** Opcode for xcb_randr_bad_provider. */
@@ -135,9 +126,6 @@ typedef struct xcb_randr_bad_provider_error_t {
     uint8_t  response_type;
     uint8_t  error_code;
     uint16_t sequence;
-    uint32_t bad_value;
-    uint16_t minor_opcode;
-    uint8_t  major_opcode;
 } xcb_randr_bad_provider_error_t;
 
 typedef enum xcb_randr_rotation_t {
