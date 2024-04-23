@@ -59,7 +59,25 @@ Once a library is bound, it's bound for the lifetime of the process. There is no
 
 ## Patching Qt
 
-Qt cannot use this library by default, it needs to be patched.
+Qt cannot use this library by default. The intent is to keep the changes to a minimum, but it needs to be patched to use the wrapped headers, as well as link against the wrapper library.
+
+The current iteration of the patch can be found in bitcoin PR [#29923](https://github.com/bitcoin/bitcoin/pull/29923). It is targeted for Qt 5.15.13 LTS.
+
+A brief overview of the patch for reviewers:
+
+- `qtbase/src/gui/configure.json`: JSON description of qtbase's dependency libraries. Replace the header file names with the wrapped header files, and the `-l` options with `-lqtsowrap -ldl`.
+- `qtbase/src/3rdparty/xcb/libxcb`: Patch Qt's internally-built `libxcb_input` to use the wrapped xcb header.
+- `qtbase/src/plugins/platforms/xcb`: Qt's xcb platform plugin.
+  - All source files are patched to use the wrapped headers for all xcb libraries except for `libxcb_input`, which is built as part of 3rdparty.
+  - Use the wrapped headers for `xkbcommon` and `xkbcommon_x11`.
+  - Initialization is added to `QXcbIntegrationPlugin::create`. If any of the xcb libraries cannot be loaded, reject loading the xcb plugin. This is not necessarily fatal, it means that another platform such as wayland could be tried.
+  - Initialization is added to `QXcbKeyboard::QXcbKeyboard`. Here, the `xkbcommon` and `xkbcommon_x11` library are loaded. If any fail, exit with a fatal error. At this point, the xcb plugin was already chosen so there's no way to continue gracefully.
+- `qtbase/src/platformsupport/fontdatabases/fontconfig`: Qt's fontconfig font database plugn.
+  - All source files are patched to use the wrapped headers for the fontconfig library.
+  - Initialization is added to `QFontconfigDatabase::QFontconfigDatabase`. Load the `fontconfig` library before any of its methods are used. Failure to load is fatal, this is a required library.
+- `qtbase/src/platformsupport/fontdatabases/freetype`: Qt's freetype font engine.
+  - All source files are patched to use the wrapped headers for the freetype library.
+  - Initialization is added to `qt_getFreetypeData()`, which is the earliest point where ft functions might be called. Failure to load is fatal, as this is a required library.
 
 ## Generation
 
