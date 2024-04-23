@@ -1,18 +1,26 @@
 #!/usr/bin/env python3
 '''
-(Re)_generate source files and build system file.
+(Re)_generate source files and CMake build system file.
 '''
 from itertools import chain
 import os
 import subprocess
 
 GEN='scripts/generate-wrapper.py'
-# important: these are grouped by what symbols are defined in what shared library.
-# so e.g.: the symbols from xproto.h are defined in libxcb.so.1, so it's grouped under there.
+
+# The list of all libraries to wrap.
+#
+# important: these are grouped by what symbols are defined by what shared library.
+# so for example: the symbols from xproto.h are defined in libxcb.so.1, so it's grouped under there.
 ALL_LIBS = [
 # shortname         # soname                       # includes to scan            # shortnames of inter-dependencies
 #################################################################################################################################
 
+### xcb
+# from src/3rdparty/xcb
+#      src/platformsupport/linuxaccessibility
+#      src/plugins/platforms/xcb
+#
 # the reason we're including xcbext.h here is because Qt builds a special version of xcb-xinput internally,
 # an optional extension to handle XInput2, that's often missing on user's systems. AFAIK this is only used for tablet support,
 # so stripping it out would be another option, but that is more incisive into Qt code.
@@ -30,9 +38,17 @@ ALL_LIBS = [
 ('xcb_xinerama',    'libxcb-xinerama.so.0',        ['xcb/xinerama.h'],           ['xcb']),
 ('xcb_xkb',         'libxcb-xkb.so.1',             ['xcb/xkb.h'],                ['xcb']),
 
+### xkb (general)
+# from src/platformsupport/input/libinput
+#      src/platformsupport/input/xkbcommon
 ('xkbcommon',       'libxkbcommon.so.0',           ['xkbcommon/xkbcommon.h'],    []),
+
+### xkb (X11 specific)
+# from src/plugins/platforms/xcb
 ('xkbcommon_x11',   'libxkbcommon-x11.so.0',       ['xkbcommon/xkbcommon-x11.h'],['xcb', 'xkbcommon']),
 
+### freetype
+# from src/platformsupport/fontdatabases/freetype
 ('freetype',        'libfreetype.so.6',            [
     'ft2build.h',
     # from src/platformsupport/fontdatabases/freetype/qfontengine_ft.cpp
@@ -49,6 +65,8 @@ ALL_LIBS = [
     'freetype/fterrors.h', # include FT_ERRORS_H
 ], []),
 
+### fontconfig
+# from src/platformsupport/fontdatabases/fontconfig
 ('fontconfig',      'libfontconfig.so.1',          ['fontconfig/fontconfig.h', 'fontconfig/fcfreetype.h'],  ['freetype']),
 ]
 
@@ -63,6 +81,7 @@ def main():
     header_files = []
     source_files = []
     for (base, soname, incnames, deps) in ALL_LIBS:
+        # Format command line to call the dynload-wrapper tool per library.
         out_hdr_base = base + OUT_H_SUFFIX
         out_hdr = os.path.join(OUT_DIR_H, out_hdr_base)
         out_impl_base = base + OUT_C_SUFFIX
