@@ -70,8 +70,7 @@ A brief overview of the patch for reviewers:
 - `qtbase/src/plugins/platforms/xcb`: Qt's xcb platform plugin.
   - All source files are patched to use the wrapped headers for all xcb libraries except for `libxcb_input`, which is built as part of 3rdparty.
   - Use the wrapped headers for `xkbcommon` and `xkbcommon_x11`.
-  - Initialization is added to `QXcbIntegrationPlugin::create`. If any of the xcb libraries cannot be loaded, reject loading the xcb plugin. This is not necessarily fatal, it means that another platform such as wayland could be tried.
-  - Initialization is added to `QXcbKeyboard::QXcbKeyboard`. Here, the `xkbcommon` and `xkbcommon_x11` library are loaded. If any fail, exit with a fatal error. At this point, the xcb plugin was already chosen so there's no way to continue gracefully.
+  - Initialization is added to `QXcbIntegrationPlugin::create`. If any of the xcb or xkbcommon libraries cannot be loaded, reject loading the xcb plugin. This is not necessarily fatal, it means that another platform such as wayland could be tried.
 - `qtbase/src/platformsupport/fontdatabases/fontconfig`: Qt's fontconfig font database plugn.
   - All source files are patched to use the wrapped headers for the fontconfig library.
   - Initialization is added to `QFontconfigDatabase::QFontconfigDatabase`. Load the `fontconfig` library before any of its methods are used. Failure to load is fatal, this is a required library.
