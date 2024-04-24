@@ -16,6 +16,9 @@ add_library(qtsowrap STATIC
   xkbcommon_x11-so_wrap.c
   freetype-so_wrap.c
   fontconfig-so_wrap.c
+  wayland_client-so_wrap.c
+  wayland_cursor-so_wrap.c
+  wayland_egl-so_wrap.c
 )
 target_sources(qtsowrap
   PUBLIC
@@ -36,6 +39,9 @@ target_sources(qtsowrap
   ../include_gen/xkbcommon_x11-so_wrap.h
   ../include_gen/freetype-so_wrap.h
   ../include_gen/fontconfig-so_wrap.h
+  ../include_gen/wayland_client-so_wrap.h
+  ../include_gen/wayland_cursor-so_wrap.h
+  ../include_gen/wayland_egl-so_wrap.h
 )
 set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER
   ../include_gen/xcb-so_wrap.h
@@ -55,11 +61,26 @@ set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER
   ../include_gen/xkbcommon_x11-so_wrap.h
   ../include_gen/freetype-so_wrap.h
   ../include_gen/fontconfig-so_wrap.h
+  ../include_gen/wayland_client-so_wrap.h
+  ../include_gen/wayland_cursor-so_wrap.h
+  ../include_gen/wayland_egl-so_wrap.h
 )
 install(TARGETS qtsowrap PUBLIC_HEADER)
 
 install(FILES
+  ../include/wayland-server.h
   ../include/ft2build.h
+  ../include/wayland-server-protocol.h
+  ../include/wayland-egl-backend.h
+  ../include/wayland-util.h
+  ../include/wayland-cursor.h
+  ../include/wayland-server-core.h
+  ../include/wayland-egl.h
+  ../include/wayland-client.h
+  ../include/wayland-egl-core.h
+  ../include/wayland-client-core.h
+  ../include/wayland-version.h
+  ../include/wayland-client-protocol.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/.
 )
 install(FILES
