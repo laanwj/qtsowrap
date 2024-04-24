@@ -73,6 +73,9 @@ ALL_LIBS = [
 ('wayland_client',  'libwayland-client.so.0',      ['wayland-client-core.h'],                     []),
 ('wayland_cursor',  'libwayland-cursor.so.0',      ['wayland-cursor.h'],                          ['wayland_client']),
 ('wayland_egl',     'libwayland-egl.so.1',         ['wayland-egl.h', 'wayland-egl-core.h'],       ['wayland_client']),
+
+### EGL
+('egl',             'libEGL.so.1',                 ['EGL/egl.h'],                                 []),
 ]
 
 INC_DIR = 'include'
