@@ -41,7 +41,7 @@ make install
 
 Include the wrapper header instead of the actual header (it will internally include that). The library functions can be called as normally. Just make sure to initialize every library before using it, and check for errors:
 ```
-#include "xcb-sowrap.h"
+#include "xcb-so_wrap.h"
 
 int main()
 {
@@ -67,7 +67,7 @@ A brief overview of the patch for reviewers:
 
 - `qtbase/src/gui/configure.json`: JSON description of qtbase's dependency libraries. Replace the header file names with the wrapped header files, and the `-l` options with `-lqtsowrap -ldl`.
 - `qtbase/src/3rdparty/xcb/libxcb`: Patch Qt's internally-built `libxcb_input` to use the wrapped xcb header.
-- `qtbase/src/plugins/platforms/xcb`: Qt's xcb platform plugin.
+- `qtbase/src/plugins/platforms/xcb`: Qt's xcb platform plugin (`libQt5XcbQpa.a` / `-lxqcb`).
   - All source files are patched to use the wrapped headers for all xcb libraries except for `libxcb_input`, which is built as part of 3rdparty.
   - Use the wrapped headers for `xkbcommon` and `xkbcommon_x11`.
   - Initialization is added to `QXcbIntegrationPlugin::create`. If any of the xcb or xkbcommon libraries cannot be loaded, reject loading the xcb plugin. This is not necessarily fatal, it means that another platform such as wayland could be tried.
