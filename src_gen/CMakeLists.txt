@@ -19,6 +19,7 @@ add_library(qtsowrap STATIC
   wayland_client-so_wrap.c
   wayland_cursor-so_wrap.c
   wayland_egl-so_wrap.c
+  egl-so_wrap.c
 )
 target_sources(qtsowrap
   PUBLIC
@@ -42,6 +43,7 @@ target_sources(qtsowrap
   ../include_gen/wayland_client-so_wrap.h
   ../include_gen/wayland_cursor-so_wrap.h
   ../include_gen/wayland_egl-so_wrap.h
+  ../include_gen/egl-so_wrap.h
 )
 set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER
   ../include_gen/xcb-so_wrap.h
@@ -64,6 +66,7 @@ set_property(TARGET qtsowrap PROPERTY PUBLIC_HEADER
   ../include_gen/wayland_client-so_wrap.h
   ../include_gen/wayland_cursor-so_wrap.h
   ../include_gen/wayland_egl-so_wrap.h
+  ../include_gen/egl-so_wrap.h
 )
 install(TARGETS qtsowrap PUBLIC_HEADER)
 
@@ -82,6 +85,18 @@ install(FILES
   ../include/wayland-version.h
   ../include/wayland-client-protocol.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/.
+)
+install(FILES
+  ../include/EGL/egl.h
+  ../include/EGL/eglplatform.h
+  ../include/EGL/eglext.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/EGL
+)
+install(FILES
+  ../include/GLES2/gl2.h
+  ../include/GLES2/gl2platform.h
+  ../include/GLES2/gl2ext.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GLES2
 )
 install(FILES
   ../include/fontconfig/fcprivate.h
