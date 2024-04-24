@@ -70,9 +70,9 @@ ALL_LIBS = [
 ('fontconfig',      'libfontconfig.so.1',          ['fontconfig/fontconfig.h', 'fontconfig/fcfreetype.h'],  ['freetype']),
 
 ### wayland
-('wayland_client',  'libwayland-client.so.0',      ['wayland-client.h', 'wayland-client-core.h', 'wayland-client-protocol.h', 'wayland-util.h'], []),
-('wayland_cursor',  'libwayland-cursor.so.0',      ['wayland-cursor.h'],                                                       ['wayland_client']),
-('wayland_egl',     'libwayland-egl.so.1',         ['wayland-egl.h', 'wayland-egl-core.h'],                                    ['wayland_client']),
+('wayland_client',  'libwayland-client.so.0',      ['wayland-client.h', 'wayland-client-core.h'], []),
+('wayland_cursor',  'libwayland-cursor.so.0',      ['wayland-cursor.h'],                          ['wayland_client']),
+('wayland_egl',     'libwayland-egl.so.1',         ['wayland-egl.h', 'wayland-egl-core.h'],       ['wayland_client']),
 ]
 
 INC_DIR = 'include'
