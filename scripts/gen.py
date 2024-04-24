@@ -41,7 +41,7 @@ ALL_LIBS = [
 ### xkb (general)
 # from src/platformsupport/input/libinput
 #      src/platformsupport/input/xkbcommon
-('xkbcommon',       'libxkbcommon.so.0',           ['xkbcommon/xkbcommon.h'],    []),
+('xkbcommon',       'libxkbcommon.so.0',           ['xkbcommon/xkbcommon.h', 'xkbcommon/xkbcommon-compose.h'],    []),
 
 ### xkb (X11 specific)
 # from src/plugins/platforms/xcb
