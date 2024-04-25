@@ -99,6 +99,10 @@ install(FILES
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GLES2
 )
 install(FILES
+  ../include/KHR/khrplatform.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/KHR
+)
+install(FILES
   ../include/fontconfig/fcprivate.h
   ../include/fontconfig/fcfreetype.h
   ../include/fontconfig/fontconfig.h
