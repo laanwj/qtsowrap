@@ -4,7 +4,7 @@
 
 This is a library that wraps Qt's Linux system integration dependencies in a way so that they are loaded at run time, and thus unneeded during the compile process. The aim is to wrap Qt's entire interface with the operating system.
 
-The source is entirely auto-generated from upstream headers. [scripts/gen.py](scripts/gen.py) contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
+The source is entirely auto-generated from upstream headers. It is a two-phase process: [scripts/collector.py](scripts/collector.py) downloads the libraries and extracts the headers, and [scripts/gen.py](scripts/gen.py) contains the definitions of the libraries and functions to wrap. See the section "Generation" below on how to regenerate the source code after updating these, or just to check.
 
 For now it handles the boilerplate for:
 
@@ -84,28 +84,23 @@ Generation dependends on `pycparser` for parsing the input headers:
 
     pip install pycparser
 
-To re-generate the headers and implementation files in `src_gen` and `include_gen` from the headers in `include`:
+- To download and verify the original tarballs and extract and generate relevant headers to `include`.
+
+```python
+python3 scripts/collector.py
+```
+
+- To re-generate the headers and implementation files in `src_gen` and `include_gen` from the headers in `include`:
 
 ```python
 python3 scripts/gen.py
 ```
 
-This process should be fully deterministic, so to verify that this worked correctly is a matter of re-running the script.
+This process should be fully deterministic, so to verify that this worked correctly is a matter of re-running the script and checking that there is a clean tree.
 
 ### Versions
 
-The following header versions are, as currently, in `include/` - same as depends on bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a` with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted:
-
-- fontconfig 2.12.6
-- freetype 2.11.0
-- libxcb 1.14
-- libxcb_util_image 0.4.0
-- libxcb_util_keysyms 0.4.0
-- libxcb_util 0.4.0
-- libxcb_util_render 0.3.9
-- libxcb_util_wm 0.4.1
-- xcb_proto 1.14.1
-- xkbcommon 0.8.4
+See the table `SOURCES` in [collector.py](scripts/collector.py) for the list of library versions used to generate the headers.
 
 ## Credits
 
