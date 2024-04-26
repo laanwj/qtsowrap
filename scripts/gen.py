@@ -78,6 +78,9 @@ OUT_H_SUFFIX = '-so_wrap.h'
 OUT_C_SUFFIX = '-so_wrap.c'
 
 def main():
+    os.makedirs(OUT_DIR_H, exist_ok=True)
+    os.makedirs(OUT_DIR_C, exist_ok=True)
+
     header_files = []
     source_files = []
     for (base, soname, incnames, deps) in ALL_LIBS:

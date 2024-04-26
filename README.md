@@ -84,6 +84,12 @@ Generation dependends on `pycparser` for parsing the input headers:
 
     pip install pycparser
 
+- Clean up existing directories (optional):
+
+```
+rm -rf include src_gen include_gen gentmp
+```
+
 - To download and verify the original tarballs and extract and generate relevant headers to `include`.
 
 ```python

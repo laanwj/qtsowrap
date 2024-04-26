@@ -193,7 +193,8 @@ def extract_generate_xcbproto():
 def main():
     download()
     print(f'Cleaning up {INCLUDE_PATH}.')
-    shutil.rmtree(INCLUDE_PATH)
+    if path.isdir(INCLUDE_PATH):
+        shutil.rmtree(INCLUDE_PATH)
     extract()
     extract_generate_xcbproto()
 
