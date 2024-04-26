@@ -129,7 +129,6 @@ install(FILES
 )
 install(FILES
   ../include/xcb/xc_misc.h
-  ../include/xcb/xcb_ewmh.h
   ../include/xcb/xcb_atom.h
   ../include/xcb/xfixes.h
   ../include/xcb/render.h
@@ -158,6 +157,7 @@ install(FILES
   ../include/xcb/xcb_icccm.h
   ../include/xcb/res.h
   ../include/xcb/xproto.h
+  ../include/xcb/xf86vidmode.h
   ../include/xcb/damage.h
   ../include/xcb/xcb_keysyms.h
   ../include/xcb/xinerama.h
