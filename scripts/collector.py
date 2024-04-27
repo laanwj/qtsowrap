@@ -22,7 +22,22 @@ SOURCES=[
     # bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`
     # with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted
     # for compatibility with Ubuntu 20.04 and 22.04.
-
+    #
+    # For reference, package versions in various Ubuntu LTS:
+    #
+    #                       20.04LTS     22.04LTS
+    #                       --------     --------
+    # - libfontconfig       2.13.1       2.13.1
+    # - libfreetype         2.10.1       2.11.1
+    # - libxkbcommon        0.10.0       1.4.0
+    # - libxcb              1.14         1.14
+    # - libxcb-util         0.4.0        0.4.0
+    # - libxcb-image        0.4.0        0.4.0
+    # - libxcb-keysyms      0.4.0        0.4.0
+    # - libxcb-render-util  0.3.9        0.3.9
+    # - libxcb-icccm        0.4.1        0.4.1    (=xcb-util-wm)
+    # - xcb-proto           1.14         1.14
+    #
     ('fontconfig',
         # Download URL
         'https://www.freedesktop.org/software/fontconfig/release/',
