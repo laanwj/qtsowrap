@@ -4,10 +4,10 @@ from os import path
 import os
 import re
 import sys
-import requests as req
 import shutil
 import subprocess
 import tarfile
+import urllib.request
 
 SOURCES_PATH='sources'
 INCLUDE_PATH='include'
@@ -131,12 +131,13 @@ def download() -> None:
         dl_path = path.join(SOURCES_PATH, filename)
         if not path.exists(dl_path):
             print(f'Downloading {dl_url} to {dl_path}')
-            request = req.get(dl_url)
-            if request.status_code != 200:
-                print(f'Download error (status {request.status_code} for {dl_path}')
+            try:
+                with urllib.request.urlopen(dl_url) as f:
+                    data = f.read()
+            except urllib.error.HTTPError as e:
+                print(f'Download error for {dl_path}: {e}')
                 error = True
                 continue
-            data = request.content
             data_sha256 = hashlib.sha256(data).hexdigest()
 
             if sha256 != data_sha256:
@@ -147,6 +148,7 @@ def download() -> None:
                 file.write(data)
 
     if error:
+        print('There were errors during download, exiting.')
         sys.exit(1)
 
 def _extract_wildcard(tar: tarfile.TarFile, src: str, dest: str) -> list[str]:
