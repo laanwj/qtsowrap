@@ -13,21 +13,25 @@ SOURCES_PATH='sources'
 INCLUDE_PATH='include'
 GENTMP_PATH='gentmp'
 
-def match_wildcard(exp, s):
-    '''Version of fn_match that handles * with / correctly.'''
-    return re.match(re.escape(exp).replace('\\*', '[^/]*'), s)
-
-# Selective extraction of headers.
+# List of sources for selective extraction of headers.
+#
+# The versions used define the interface, thus the package required on the user's system.
+#
 SOURCES=[
-    # The following header versions are, as currently, in `include/` - same as depends on
+    # The following header versions are the same as depends on
     # bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`
-    # with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted:
+    # with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted
+    # for compatibility with Ubuntu 20.04 and 22.04.
 
     ('fontconfig',
+        # Download URL
         'https://www.freedesktop.org/software/fontconfig/release/',
+        # Filename
         'fontconfig-2.12.6.tar.bz2',
+        # SHA256 hash of archive (will be checked before extracting).
         'cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017',
-        [    # src, dest  paths to install headers from
+        # List of source spec wildcard, destination path to install headers to.
+        [
             ('fontconfig/*.h',          'fontconfig'),
         ],
     ),
@@ -106,7 +110,20 @@ SOURCES=[
     ),
 ]
 
-def download():
+#-----------------------------------------------------------------------------
+# implementation
+
+def match_wildcard(exp: str, s: str) -> str:
+    '''
+    Match a filename against a path expression.
+    A version of fn_match that handles * with / correctly.
+    '''
+    return re.match(re.escape(exp).replace('\\*', '[^/]*') + '$', s)
+
+def download() -> None:
+    '''
+    Download and check the upstream archives to `sources/`, if they don't exist yet.
+    '''
     os.makedirs(SOURCES_PATH, exist_ok=True)
     error = False
     for (libname, url, filename, sha256, _) in SOURCES:
@@ -132,7 +149,11 @@ def download():
     if error:
         sys.exit(1)
 
-def _extract_wildcard(tar, src, dest):
+def _extract_wildcard(tar: tarfile.TarFile, src: str, dest: str) -> list[str]:
+    '''
+    Extract files designated by path expression 'src' to directory 'dest',
+    creating it if not existent. Returns the list of files extracted.
+    '''
     out = []
     for member in tar.getmembers():
         # strip first component
@@ -140,7 +161,7 @@ def _extract_wildcard(tar, src, dest):
         src_path = '/'.join(components)
         if match_wildcard(src, src_path):
             os.makedirs(dest, exist_ok=True)
-            print('/'.join(components), 'to', dest)
+            print(f'  {"/".join(components)} to {dest}')
             dest_path = path.join(dest, components[-1])
             with tar.extractfile(member) as file:
                 with open(dest_path, 'wb') as outfile:
@@ -148,7 +169,11 @@ def _extract_wildcard(tar, src, dest):
             out.append(dest_path)
     return out
 
-def extract():
+def extract() -> None:
+    '''
+    Extract external headers from downloaded archives and put them in
+    'include/' subtreesa as expected by Qt.
+    '''
     for (_, _, filename, _, headers) in SOURCES:
         print(f'Processing {filename}')
         dl_path = path.join(SOURCES_PATH, filename)
@@ -157,10 +182,11 @@ def extract():
         for (src, dst) in headers:
             _extract_wildcard(tar, src, path.join(INCLUDE_PATH, dst))
 
-def extract_generate_xcbproto():
+def extract_generate_xcbproto() -> None:
     '''
-    Extract and generate the XCB proto headers.
+    Extract and generate the XCB proto headers using c_client.py from libxcb.
     '''
+    print('Extracting XCB protocol generator...')
     # Get handle to xcb_proto and libxcb tar files.
     tars = {}
     for (libname, _, filename, _, headers) in SOURCES:
@@ -168,33 +194,41 @@ def extract_generate_xcbproto():
         if libname in {'xcb_proto', 'libxcb'}:
             tars[libname] = tarfile.open(dl_path, 'r:*')
 
+    xml_dir = path.join(GENTMP_PATH, 'xml')
+
     # Extract src/*.xml library from xcbproto
-    xml_files = _extract_wildcard(tars['xcb_proto'], 'src/*.xml', path.join(GENTMP_PATH, 'xml'))
+    xml_files = _extract_wildcard(tars['xcb_proto'], 'src/*.xml', xml_dir)
     # Extract xcbgen/*.py python library from xcbproto
     _extract_wildcard(tars['xcb_proto'], 'xcbgen/*.py', path.join(GENTMP_PATH, 'xcbgen'))
     # Extract src/c_client.py from libxcb
     _extract_wildcard(tars['libxcb'], 'src/c_client.py', GENTMP_PATH)
 
-    # Run:c_client on xml files
+    # Run:c_client.py on every protocol xml file, copy out header.
     orig_path = os.getcwd()
     xcb_include_path = path.join(orig_path, INCLUDE_PATH, 'xcb')
     os.chdir(GENTMP_PATH)
 
+    print('Generating XCB protocol headers...')
+
     for filename in xml_files:
         filename = path.relpath(filename, GENTMP_PATH)
         header_name = path.basename(filename).removesuffix('.xml') + '.h'
-        print(f'Processing XCB protocol file {filename} to {header_name}...')
-        subprocess.run([sys.executable, 'c_client.py', '-c', 'libxcb 1.14', '-l', 'X Version 11', '-s', '3', filename], check=True)
+        target = path.join(xcb_include_path, header_name)
+        print(f'  Generating XCB protocol file {path.basename(filename)} to {path.relpath(target, orig_path)}...')
+        subprocess.run([sys.executable, 'c_client.py', '-c', '', '-l', '', '-s', '3', filename], check=True)
         # Copy generated protocol header.
-        shutil.copyfile(header_name, path.join(xcb_include_path, header_name))
+        shutil.copyfile(header_name, target)
 
     os.chdir(orig_path)
 
-def main():
+def main() -> None:
+    '''Main function.'''
     download()
+
     print(f'Cleaning up {INCLUDE_PATH}.')
     if path.isdir(INCLUDE_PATH):
         shutil.rmtree(INCLUDE_PATH)
+
     extract()
     extract_generate_xcbproto()
 

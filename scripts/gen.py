@@ -77,6 +77,9 @@ OUT_DIR_C = 'src_gen'
 OUT_H_SUFFIX = '-so_wrap.h'
 OUT_C_SUFFIX = '-so_wrap.c'
 
+#-----------------------------------------------------------------------------
+# implementation
+
 def main():
     os.makedirs(OUT_DIR_H, exist_ok=True)
     os.makedirs(OUT_DIR_C, exist_ok=True)
