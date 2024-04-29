@@ -15,13 +15,14 @@ GENTMP_PATH='gentmp'
 
 # List of sources for selective extraction of headers.
 #
-# The versions used define the interface, thus the package required on the user's system.
+# The versions used define the interface, thus the lowest version package
+# required on the user's system.
 #
 SOURCES=[
     # The following header versions are the same as depends on
-    # bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`
-    # with `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted
-    # for compatibility with Ubuntu 20.04 and 22.04.
+    # bitcoin commit `c05c214f2e9cfd6070a3c7680bfa09358fd9d97a`, with (see issue #29977):
+    # - `7cb88c8b46723d306b96953a6a60c90a4ab211e3` (depends: xcb-proto 1.15.2) reverted for compatibility with Ubuntu 20.04 and 22.04.
+    # - freetype downgraded to 2.10.1 to be compatible with Ubuntu 20.04
     #
     # For reference, package versions in various Ubuntu LTS:
     #
@@ -52,8 +53,8 @@ SOURCES=[
     ),
     ('freetype',
         'https://download.savannah.gnu.org/releases/freetype/',
-        'freetype-2.11.0.tar.xz',
-        '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7',
+        'freetype-2.10.1.tar.xz',
+        '16dbfa488a21fe827dc27eaf708f42f7aa3bb997d745d31a19781628c36ba26f',
         [
             ('include/*.h',             ''),   # ft2build.h
             ('include/freetype/*.h',    'freetype'),
