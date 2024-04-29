@@ -22,7 +22,6 @@
 #define FT_Load_Glyph FT_Load_Glyph_dylibloader_orig_freetype
 #define FT_Load_Char FT_Load_Char_dylibloader_orig_freetype
 #define FT_Set_Transform FT_Set_Transform_dylibloader_orig_freetype
-#define FT_Get_Transform FT_Get_Transform_dylibloader_orig_freetype
 #define FT_Render_Glyph FT_Render_Glyph_dylibloader_orig_freetype
 #define FT_Get_Kerning FT_Get_Kerning_dylibloader_orig_freetype
 #define FT_Get_Track_Kerning FT_Get_Track_Kerning_dylibloader_orig_freetype
@@ -37,6 +36,7 @@
 #define FT_Face_Properties FT_Face_Properties_dylibloader_orig_freetype
 #define FT_Get_Name_Index FT_Get_Name_Index_dylibloader_orig_freetype
 #define FT_Get_SubGlyph_Info FT_Get_SubGlyph_Info_dylibloader_orig_freetype
+#define FT_Get_Color_Glyph_Layer FT_Get_Color_Glyph_Layer_dylibloader_orig_freetype
 #define FT_Get_FSType_Flags FT_Get_FSType_Flags_dylibloader_orig_freetype
 #define FT_Face_GetCharVariantIndex FT_Face_GetCharVariantIndex_dylibloader_orig_freetype
 #define FT_Face_GetCharVariantIsDefault FT_Face_GetCharVariantIsDefault_dylibloader_orig_freetype
@@ -133,7 +133,6 @@
 #undef FT_Load_Glyph
 #undef FT_Load_Char
 #undef FT_Set_Transform
-#undef FT_Get_Transform
 #undef FT_Render_Glyph
 #undef FT_Get_Kerning
 #undef FT_Get_Track_Kerning
@@ -148,6 +147,7 @@
 #undef FT_Face_Properties
 #undef FT_Get_Name_Index
 #undef FT_Get_SubGlyph_Info
+#undef FT_Get_Color_Glyph_Layer
 #undef FT_Get_FSType_Flags
 #undef FT_Face_GetCharVariantIndex
 #undef FT_Face_GetCharVariantIsDefault
@@ -234,7 +234,6 @@ FT_Error (*FT_Set_Pixel_Sizes_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT
 FT_Error (*FT_Load_Glyph_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_Int32);
 FT_Error (*FT_Load_Char_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_Int32);
 void (*FT_Set_Transform_dylibloader_wrapper_freetype)(FT_Face, FT_Matrix *, FT_Vector *);
-void (*FT_Get_Transform_dylibloader_wrapper_freetype)(FT_Face, FT_Matrix *, FT_Vector *);
 FT_Error (*FT_Render_Glyph_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_Render_Mode);
 FT_Error (*FT_Get_Kerning_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_UInt, FT_UInt, FT_Vector *);
 FT_Error (*FT_Get_Track_Kerning_dylibloader_wrapper_freetype)(FT_Face, FT_Fixed, FT_Int, FT_Fixed *);
@@ -249,6 +248,7 @@ FT_ULong (*FT_Get_Next_Char_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_
 FT_Error (*FT_Face_Properties_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_Parameter *);
 FT_UInt (*FT_Get_Name_Index_dylibloader_wrapper_freetype)(FT_Face, const FT_String *);
 FT_Error (*FT_Get_SubGlyph_Info_dylibloader_wrapper_freetype)(FT_GlyphSlot, FT_UInt, FT_Int *, FT_UInt *, FT_Int *, FT_Int *, FT_Matrix *);
+FT_Bool (*FT_Get_Color_Glyph_Layer_dylibloader_wrapper_freetype)(FT_Face, FT_UInt, FT_UInt *, FT_UInt *, FT_LayerIterator *);
 FT_UShort (*FT_Get_FSType_Flags_dylibloader_wrapper_freetype)(FT_Face);
 FT_UInt (*FT_Face_GetCharVariantIndex_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_ULong);
 FT_Int (*FT_Face_GetCharVariantIsDefault_dylibloader_wrapper_freetype)(FT_Face, FT_ULong, FT_ULong);
@@ -480,15 +480,6 @@ int initialize_freetype(int verbose) {
       return(1);
     }
   }
-/* FT_Get_Transform */
-  *(void **) (&FT_Get_Transform_dylibloader_wrapper_freetype) = dlsym(handle, "FT_Get_Transform");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-      return(1);
-    }
-  }
 /* FT_Render_Glyph */
   *(void **) (&FT_Render_Glyph_dylibloader_wrapper_freetype) = dlsym(handle, "FT_Render_Glyph");
   if (verbose) {
@@ -608,6 +599,15 @@ int initialize_freetype(int verbose) {
   }
 /* FT_Get_SubGlyph_Info */
   *(void **) (&FT_Get_SubGlyph_Info_dylibloader_wrapper_freetype) = dlsym(handle, "FT_Get_SubGlyph_Info");
+  if (verbose) {
+    error = dlerror();
+    if (error != NULL) {
+      fprintf(stderr, "%s\n", error);
+      return(1);
+    }
+  }
+/* FT_Get_Color_Glyph_Layer */
+  *(void **) (&FT_Get_Color_Glyph_Layer_dylibloader_wrapper_freetype) = dlsym(handle, "FT_Get_Color_Glyph_Layer");
   if (verbose) {
     error = dlerror();
     if (error != NULL) {

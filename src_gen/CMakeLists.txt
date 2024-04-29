@@ -90,7 +90,6 @@ install(FILES
   ../include/freetype/ftbzip2.h
   ../include/freetype/fttrigon.h
   ../include/freetype/ftsnames.h
-  ../include/freetype/ftlogging.h
   ../include/freetype/ftmoderr.h
   ../include/freetype/ftlist.h
   ../include/freetype/ftgasp.h
@@ -119,12 +118,9 @@ install(FILES
 install(FILES
   ../include/freetype/config/ftoption.h
   ../include/freetype/config/ftconfig.h
-  ../include/freetype/config/mac-support.h
   ../include/freetype/config/ftstdlib.h
   ../include/freetype/config/ftmodule.h
-  ../include/freetype/config/integer-types.h
   ../include/freetype/config/ftheader.h
-  ../include/freetype/config/public-macros.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype/config
 )
 install(FILES
