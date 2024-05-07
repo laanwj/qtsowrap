@@ -140,7 +140,7 @@ def main():
         prefix = 'include'
         for root, dirs, files in sorted(os.walk(prefix)):
             f.write('install(FILES\n')
-            flies = sorted(files) # determinism
+            files = sorted(files) # determinism
             for file in files:
                 filename = os.path.join(root, file)
                 f.write(f'  ../{filename}\n')
