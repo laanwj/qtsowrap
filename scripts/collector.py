@@ -52,7 +52,7 @@ SOURCES=[
         ],
     ),
     ('freetype',
-        'https://download.savannah.gnu.org/releases/freetype/',
+        'https://download-mirror.savannah.gnu.org/releases/freetype/',
         'freetype-2.10.1.tar.xz',
         '16dbfa488a21fe827dc27eaf708f42f7aa3bb997d745d31a19781628c36ba26f',
         [
