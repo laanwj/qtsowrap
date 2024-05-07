@@ -63,118 +63,118 @@ install(FILES
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/.
 )
 install(FILES
-  ../include/fontconfig/fcprivate.h
   ../include/fontconfig/fcfreetype.h
+  ../include/fontconfig/fcprivate.h
   ../include/fontconfig/fontconfig.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fontconfig
 )
 install(FILES
-  ../include/freetype/ftoutln.h
-  ../include/freetype/ftimage.h
-  ../include/freetype/t1tables.h
-  ../include/freetype/ftparams.h
-  ../include/freetype/ftincrem.h
-  ../include/freetype/ftsizes.h
-  ../include/freetype/ttnameid.h
-  ../include/freetype/fterrors.h
-  ../include/freetype/fterrdef.h
-  ../include/freetype/ftcache.h
-  ../include/freetype/ftsynth.h
-  ../include/freetype/ftglyph.h
-  ../include/freetype/ftbbox.h
-  ../include/freetype/ftgxval.h
-  ../include/freetype/tttags.h
-  ../include/freetype/ftadvanc.h
-  ../include/freetype/ftgzip.h
-  ../include/freetype/ftdriver.h
-  ../include/freetype/ftbzip2.h
-  ../include/freetype/fttrigon.h
-  ../include/freetype/ftsnames.h
-  ../include/freetype/ftmoderr.h
-  ../include/freetype/ftlist.h
-  ../include/freetype/ftgasp.h
   ../include/freetype/freetype.h
+  ../include/freetype/ftadvanc.h
+  ../include/freetype/ftbbox.h
+  ../include/freetype/ftbdf.h
+  ../include/freetype/ftbitmap.h
+  ../include/freetype/ftbzip2.h
+  ../include/freetype/ftcache.h
   ../include/freetype/ftchapters.h
   ../include/freetype/ftcid.h
-  ../include/freetype/ftstroke.h
-  ../include/freetype/ftmac.h
-  ../include/freetype/ftrender.h
-  ../include/freetype/ftbitmap.h
-  ../include/freetype/fttypes.h
-  ../include/freetype/ftlcdfil.h
-  ../include/freetype/ftpfr.h
-  ../include/freetype/ftfntfmt.h
-  ../include/freetype/tttables.h
-  ../include/freetype/ftsystem.h
-  ../include/freetype/ftlzw.h
-  ../include/freetype/ftwinfnt.h
-  ../include/freetype/ftotval.h
   ../include/freetype/ftcolor.h
-  ../include/freetype/ftmodapi.h
-  ../include/freetype/ftbdf.h
+  ../include/freetype/ftdriver.h
+  ../include/freetype/fterrdef.h
+  ../include/freetype/fterrors.h
+  ../include/freetype/ftfntfmt.h
+  ../include/freetype/ftgasp.h
+  ../include/freetype/ftglyph.h
+  ../include/freetype/ftgxval.h
+  ../include/freetype/ftgzip.h
+  ../include/freetype/ftimage.h
+  ../include/freetype/ftincrem.h
+  ../include/freetype/ftlcdfil.h
+  ../include/freetype/ftlist.h
+  ../include/freetype/ftlzw.h
+  ../include/freetype/ftmac.h
   ../include/freetype/ftmm.h
+  ../include/freetype/ftmodapi.h
+  ../include/freetype/ftmoderr.h
+  ../include/freetype/ftotval.h
+  ../include/freetype/ftoutln.h
+  ../include/freetype/ftparams.h
+  ../include/freetype/ftpfr.h
+  ../include/freetype/ftrender.h
+  ../include/freetype/ftsizes.h
+  ../include/freetype/ftsnames.h
+  ../include/freetype/ftstroke.h
+  ../include/freetype/ftsynth.h
+  ../include/freetype/ftsystem.h
+  ../include/freetype/fttrigon.h
+  ../include/freetype/fttypes.h
+  ../include/freetype/ftwinfnt.h
+  ../include/freetype/t1tables.h
+  ../include/freetype/ttnameid.h
+  ../include/freetype/tttables.h
+  ../include/freetype/tttags.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype
 )
 install(FILES
-  ../include/freetype/config/ftoption.h
   ../include/freetype/config/ftconfig.h
-  ../include/freetype/config/ftstdlib.h
-  ../include/freetype/config/ftmodule.h
   ../include/freetype/config/ftheader.h
+  ../include/freetype/config/ftmodule.h
+  ../include/freetype/config/ftoption.h
+  ../include/freetype/config/ftstdlib.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype/config
 )
 install(FILES
-  ../include/xcb/xc_misc.h
-  ../include/xcb/xcb_atom.h
-  ../include/xcb/xfixes.h
-  ../include/xcb/render.h
-  ../include/xcb/xcbext.h
-  ../include/xcb/xcb_util.h
-  ../include/xcb/xf86dri.h
-  ../include/xcb/xcb_bitops.h
-  ../include/xcb/xtest.h
-  ../include/xcb/xvmc.h
-  ../include/xcb/dri3.h
   ../include/xcb/bigreq.h
-  ../include/xcb/shape.h
-  ../include/xcb/xevie.h
-  ../include/xcb/dpms.h
-  ../include/xcb/xv.h
-  ../include/xcb/randr.h
-  ../include/xcb/xcb.h
-  ../include/xcb/xcb_event.h
-  ../include/xcb/ge.h
-  ../include/xcb/sync.h
-  ../include/xcb/screensaver.h
-  ../include/xcb/xcb_pixel.h
-  ../include/xcb/record.h
-  ../include/xcb/xselinux.h
-  ../include/xcb/dri2.h
-  ../include/xcb/xcb_icccm.h
-  ../include/xcb/res.h
-  ../include/xcb/xproto.h
-  ../include/xcb/xf86vidmode.h
-  ../include/xcb/damage.h
-  ../include/xcb/xcb_keysyms.h
-  ../include/xcb/xinerama.h
-  ../include/xcb/xprint.h
-  ../include/xcb/xcb_image.h
-  ../include/xcb/xinput.h
-  ../include/xcb/xcb_aux.h
-  ../include/xcb/present.h
-  ../include/xcb/glx.h
   ../include/xcb/composite.h
-  ../include/xcb/xcb_renderutil.h
-  ../include/xcb/xkb.h
+  ../include/xcb/damage.h
+  ../include/xcb/dpms.h
+  ../include/xcb/dri2.h
+  ../include/xcb/dri3.h
+  ../include/xcb/ge.h
+  ../include/xcb/glx.h
+  ../include/xcb/present.h
+  ../include/xcb/randr.h
+  ../include/xcb/record.h
+  ../include/xcb/render.h
+  ../include/xcb/res.h
+  ../include/xcb/screensaver.h
+  ../include/xcb/shape.h
   ../include/xcb/shm.h
+  ../include/xcb/sync.h
+  ../include/xcb/xc_misc.h
+  ../include/xcb/xcb.h
+  ../include/xcb/xcb_atom.h
+  ../include/xcb/xcb_aux.h
+  ../include/xcb/xcb_bitops.h
+  ../include/xcb/xcb_event.h
+  ../include/xcb/xcb_icccm.h
+  ../include/xcb/xcb_image.h
+  ../include/xcb/xcb_keysyms.h
+  ../include/xcb/xcb_pixel.h
+  ../include/xcb/xcb_renderutil.h
+  ../include/xcb/xcb_util.h
+  ../include/xcb/xcbext.h
+  ../include/xcb/xevie.h
+  ../include/xcb/xf86dri.h
+  ../include/xcb/xf86vidmode.h
+  ../include/xcb/xfixes.h
+  ../include/xcb/xinerama.h
+  ../include/xcb/xinput.h
+  ../include/xcb/xkb.h
+  ../include/xcb/xprint.h
+  ../include/xcb/xproto.h
+  ../include/xcb/xselinux.h
+  ../include/xcb/xtest.h
+  ../include/xcb/xv.h
+  ../include/xcb/xvmc.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xcb
 )
 install(FILES
-  ../include/xkbcommon/xkbcommon-names.h
-  ../include/xkbcommon/xkbcommon.h
-  ../include/xkbcommon/xkbcommon-keysyms.h
-  ../include/xkbcommon/xkbcommon-x11.h
   ../include/xkbcommon/xkbcommon-compat.h
   ../include/xkbcommon/xkbcommon-compose.h
+  ../include/xkbcommon/xkbcommon-keysyms.h
+  ../include/xkbcommon/xkbcommon-names.h
+  ../include/xkbcommon/xkbcommon-x11.h
+  ../include/xkbcommon/xkbcommon.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xkbcommon
 )
